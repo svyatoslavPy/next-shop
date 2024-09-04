@@ -1,0 +1,40 @@
+// mixins for adaptive
+$screen-xl: 1200px;
+$screen-lg: 992px;
+$screen-md: 768px;
+$screen-sm: 640px;
+
+// Extra large devices
+@mixin onExtraLarge {
+  @media (max-width: #{$screen-xl}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin onLarge {
+  @media (max-width: #{$screen-lg}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin onMedium {
+  @media (max-width: #{$screen-md}) {
+    @content;
+  }
+}
+
+// Small devices
+@mixin onSmall {
+  @media (max-width: #{$screen-sm}) {
+    @content;
+  }
+}
+
+// Custom devices
+@mixin onCustom($screen) {
+  @media (max-width: #{$screen+'px'}) {
+    @content;
+  }
+}
