@@ -1,0 +1,14 @@
+@import '../../../styles/variables';
+
+.header {
+  margin-top: 48px;
+  border-bottom: 1px solid $gray-light;
+  padding-bottom: 17px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+

@@ -1,0 +1,47 @@
+@import '../../../../styles/variables';
+
+.navigation {
+  display: flex;
+  align-items: center;
+  column-gap: 62px;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  column-gap: 59px;
+  border-right: 1px solid $gray-dark;
+  padding-right: 59px;
+
+
+  &--primary {
+    border: none;
+    padding-right: 0px;
+    column-gap: 39px;
+  }
+}
+
+.linksItem {
+  line-height: 18px;
+  cursor: pointer;
+}
+
+.link {
+  text-decoration: none;
+  color: $black;
+  
+  &--primary {
+    &::after {
+      display: block;
+      content: '';
+      transition: all 0.5s;
+      width: 0%;
+      height: 2px;
+      background-color: $black;
+    }
+  
+    &:hover::after {
+      width: 100%;
+    }
+  }
+}
