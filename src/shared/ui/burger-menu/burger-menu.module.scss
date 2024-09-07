@@ -1,0 +1,61 @@
+
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+
+.burger-menu {
+  display: none;
+  width: 20px;
+  height: 30px;
+  margin: 0px;
+  position: relative;
+  cursor: pointer;
+  transform: translateY(2px);
+
+  @include tablet-custom(840) {
+    display: inline-block;
+  }
+}
+
+.burger-menu span {
+  background-color: $black;
+  position: absolute;
+  border-radius: 4px;
+  transition: .3s cubic-bezier(.8, .5, .2, 1.4);
+  width: 20px;
+  height: 2.3px;
+  transition-duration: 500ms;
+}
+
+.burger-menu span:nth-child(1){
+  top:0px;
+  left: 0px;
+}
+
+.burger-menu span:nth-child(2){
+  top: 7px;
+  left: 0px;
+  opacity:1;
+}
+
+.burger-menu span:nth-child(3){
+  width: 15px;
+  bottom: 13px;
+  left: 5px;
+}
+
+.burger-menu.open span:nth-child(1){
+  transform: rotate(45deg);
+  top: 13px;
+}
+
+.burger-menu.open span:nth-child(2){
+  opacity:0;
+}
+
+.burger-menu.open span:nth-child(3){
+  transform: rotate(-45deg);
+  top: 13px;
+  left: 0px;
+  width: 100%;
+}

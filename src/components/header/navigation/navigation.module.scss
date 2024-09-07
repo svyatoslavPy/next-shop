@@ -1,0 +1,69 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.navigation, .links {
+  display: flex;
+  align-items: center;
+  column-gap: 59px;
+
+  @include tablet-xl {
+    column-gap: 45px;
+  }
+
+  @include tablet-lg {
+    column-gap: 25px;
+  }
+}
+
+.navigation {
+  @include tablet-custom(840) {
+    display: none;
+  }
+}
+
+.links {
+  &--primary {
+    column-gap: 39px;
+    height: 20px;
+    border-left: 1px solid $gray-dark;
+
+    @include tablet-xl {
+      column-gap: 30px;
+    }
+
+    @include tablet-lg {
+      column-gap: 20px;
+    }
+
+    @include tablet-custom(840) {
+      border: none;
+    }
+  }
+}
+
+.linksItem {
+  cursor: pointer;
+}
+
+.link {
+  position: relative;
+  text-decoration: none;
+  color: $black;
+  
+  &--primary {
+    &::after {
+      display: block;
+      content: '';
+      transition: all 0.5s;
+      width: 0%;
+      height: 2px;
+      position: absolute;
+      transform: translateY(10px);
+      background-color: $black;
+    }
+  
+    &:hover::after {
+      width: 100%;
+    }
+  }
+}

@@ -4,4 +4,6 @@ export interface InputProps
   extends DetailedHTMLProps<
     InputHTMLAttributes<HTMLInputElement>,
     HTMLInputElement
-  > {}
+  > {
+  appearance?: 'gray' | 'white';
+}

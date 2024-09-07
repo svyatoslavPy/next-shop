@@ -1,40 +1,47 @@
 // mixins for adaptive
-$screen-xl: 1200px;
-$screen-lg: 992px;
-$screen-md: 768px;
-$screen-sm: 640px;
+$tablet-xl: 1200px;
+$tablet-lg: 1000px;
+$tablet-md: 768px;
+$tablet-sm: 640px;
+$phone-sm: 320px;
 
-// Extra large devices
-@mixin onExtraLarge {
-  @media (max-width: #{$screen-xl}) {
+// Extra large devices (Desktops, large monitors)
+@mixin tablet-xl {
+  @media (max-width: #{$tablet-xl}) {
     @content;
   }
 }
 
-// Large devices
-@mixin onLarge {
-  @media (max-width: #{$screen-lg}) {
+// Large devices (Laptops, larger tablets in landscape mode)
+@mixin tablet-lg {
+  @media (max-width: #{$tablet-lg}) {
     @content;
   }
 }
 
-// Medium devices
-@mixin onMedium {
-  @media (max-width: #{$screen-md}) {
+// Medium devices (Tablets, smaller laptops)
+@mixin tablet-md {
+  @media (max-width: #{$tablet-md}) {
     @content;
   }
 }
 
-// Small devices
-@mixin onSmall {
-  @media (max-width: #{$screen-sm}) {
+// Small devices (Smartphones)
+@mixin tablet-sm {
+  @media (max-width: #{$tablet-sm}) {
     @content;
   }
 }
 
-// Custom devices
-@mixin onCustom($screen) {
-  @media (max-width: #{$screen+'px'}) {
+@mixin phone-sm {
+  @media (max-width: #{$phone-sm}) {
+    @content;
+  }
+}
+
+// Custom devices (any user-defined width)
+@mixin tablet-custom($screen) {
+  @media (max-width: #{$screen + 'px'}) {
     @content;
   }
 }

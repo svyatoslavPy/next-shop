@@ -1,0 +1,40 @@
+@import '../../styles/variables';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  margin-top: 50px;
+  
+  position: absolute;
+  bottom: 0;
+  width: 1250px;
+  margin-bottom: 20px;
+}
+
+.links {
+  display: flex;
+  column-gap: 29px;
+}
+
+.link {
+  text-decoration: none;
+  color: $gray-dark;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 16px;
+  line-height: 27px;
+}
+
+.socialNetworks {
+  display: flex;
+  align-items: center;
+  column-gap: 30px;
+}
