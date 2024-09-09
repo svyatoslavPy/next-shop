@@ -16,7 +16,7 @@
 }
 
 .navigation {
-  @include tablet-custom(840) {
+  @include device-custom(840) {
     display: none;
   }
 }
@@ -35,35 +35,43 @@
       column-gap: 20px;
     }
 
-    @include tablet-custom(840) {
+    @include device-custom(840) {
       border: none;
     }
   }
 }
 
-.linksItem {
+.item {
   cursor: pointer;
+  position: relative;
 }
 
 .link {
-  position: relative;
   text-decoration: none;
   color: $black;
-  
-  &--primary {
+
+  &:hover {
+    color: $gray-secondary;
+  }
+
+  &::after {
+    display: block;
+    content: '';
+    width: 0%;
+    height: 2.5px;
+    background-color: $black;
+    position: absolute;
+    transform: translateY(17px);
+    transition: all 0.2s;
+  }
+
+  &--active {
     &::after {
-      display: block;
-      content: '';
-      transition: all 0.5s;
-      width: 0%;
-      height: 2px;
-      position: absolute;
-      transform: translateY(10px);
-      background-color: $black;
-    }
-  
-    &:hover::after {
       width: 100%;
     }
+  }
+
+  &:hover::after {
+    width: 100%;
   }
 }

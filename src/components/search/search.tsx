@@ -11,7 +11,6 @@ import styles from './search.module.scss';
 import { SearchProps } from './search.props';
 
 export const Search = motion(
-  // eslint-disable-next-line react/display-name
   forwardRef(
     (
       { className, ...props }: SearchProps,

@@ -1,11 +1,8 @@
-import { FacebookIcon } from '@/shared/icons/facebook';
-import { InstagramIcon } from '@/shared/icons/instagram';
-import { LinkedinIcon } from '@/shared/icons/linkedin';
-import { TwitterIcon } from '@/shared/icons/twitter';
 import Link from 'next/link';
 
 import styles from './footer.module.scss';
 import { Form as FooterForm } from './form';
+import { SocialNetworks } from './social-networks';
 
 export const Footer = () => {
   return (
@@ -31,24 +28,8 @@ export const Footer = () => {
 
         <FooterForm />
       </div>
-      <div className={styles.wrapper}>
-        <p className={styles.logo}>© 2024 Shoppe</p>
 
-        <ul className={styles.socialNetworks}>
-          <li>
-            <LinkedinIcon />
-          </li>
-          <li>
-            <FacebookIcon />
-          </li>
-          <li>
-            <InstagramIcon />
-          </li>
-          <li>
-            <TwitterIcon />
-          </li>
-        </ul>
-      </div>
+      <SocialNetworks />
     </footer>
   );
 };

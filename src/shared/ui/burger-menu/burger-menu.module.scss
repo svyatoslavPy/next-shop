@@ -12,7 +12,7 @@
   cursor: pointer;
   transform: translateY(2px);
 
-  @include tablet-custom(840) {
+  @include device-custom(840) {
     display: inline-block;
   }
 }

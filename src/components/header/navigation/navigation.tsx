@@ -7,6 +7,7 @@ import { GlassIcon } from '@/shared/icons/glass';
 import cn from 'classnames';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useRef, useState } from 'react';
 
 import styles from './navigation.module.scss';
@@ -14,6 +15,7 @@ import styles from './navigation.module.scss';
 export const HeaderNav = () => {
   const [isOpenSearch, setIsOpenSearch] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
+  const currentPathname = usePathname();
 
   const containerVariants = {
     visible: { paddingLeft: '22px' },
@@ -37,18 +39,22 @@ export const HeaderNav = () => {
   return (
     <nav className={styles.navigation}>
       <ul className={styles.links}>
-        <li className={styles.linksItem}>
+        <li className={styles.item}>
           <Link
             href='/catalog'
-            className={cn(styles.link, styles['link--primary'])}
+            className={cn(styles.link, {
+              [styles['link--active']]: currentPathname === '/catalog',
+            })}
           >
             Магазин
           </Link>
         </li>
-        <li className={styles.linksItem}>
+        <li className={styles.item}>
           <Link
             href='/about-us'
-            className={cn(styles.link, styles['link--primary'])}
+            className={cn(styles.link, {
+              [styles['link--active']]: currentPathname === '/about-us',
+            })}
           >
             О нас
           </Link>
@@ -60,12 +66,13 @@ export const HeaderNav = () => {
         variants={containerVariants}
         className={cn(styles.links, styles['links--primary'])}
       >
-        <li className={styles.linksItem}>
+        <li className={styles.item}>
           <Search
             ref={searchRef}
             initial='hidden'
             variants={searchVariants}
             animate={isOpenSearch ? 'visible' : 'hidden'}
+            style={{ pointerEvents: isOpenSearch ? 'all' : 'none' }}
           />
         </li>
 
@@ -75,22 +82,38 @@ export const HeaderNav = () => {
           animate={isOpenSearch ? 'hidden' : 'visible'}
           variants={glassVariants}
           style={{ pointerEvents: isOpenSearch ? 'none' : 'all' }}
-          className={styles.linksItem}
+          className={styles.item}
         >
           <GlassIcon />
         </motion.li>
-        <li className={styles.linksItem}>
-          <Link href='/shopping-cart' className={styles.link}>
+        <li className={styles.item}>
+          <Link
+            href='/shopping-cart'
+            className={cn(styles.link, {
+              [styles['link--active']]: currentPathname === '/shopping-cart',
+            })}
+          >
             <ProductsCounter icon='cart' count={1} />
           </Link>
         </li>
-        <li className={styles.linksItem}>
-          <Link href='/catalog/favorites' className={styles.link}>
+        <li className={styles.item}>
+          <Link
+            href='/catalog/favorites'
+            className={cn(styles.link, {
+              [styles['link--active']]:
+                currentPathname === '/catalog/favorites',
+            })}
+          >
             <ProductsCounter icon='favorite' />
           </Link>
         </li>
-        <li className={styles.linksItem}>
-          <Link href='/account' className={styles.link}>
+        <li className={styles.item}>
+          <Link
+            href='/account'
+            className={cn(styles.link, {
+              [styles['link--active']]: currentPathname === '/account',
+            })}
+          >
             <AccountIcon />
           </Link>
         </li>
