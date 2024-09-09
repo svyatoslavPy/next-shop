@@ -1,3 +1,5 @@
+'use client';
+
 import { IMenu } from '@/shared/interfaces/menu.interface';
 import cn from 'classnames';
 

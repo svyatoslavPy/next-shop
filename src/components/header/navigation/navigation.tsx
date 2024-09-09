@@ -2,6 +2,12 @@
 
 import { ProductsCounter } from '@/components/products-counter';
 import { Search } from '@/components/search';
+import {
+  containerVariants,
+  glassVariants,
+  searchVariants,
+} from '@/shared/constants/framer-motion';
+import { NavigationPathnames } from '@/shared/enums/navigation-pathnames.enum';
 import { AccountIcon } from '@/shared/icons/account';
 import { GlassIcon } from '@/shared/icons/glass';
 import cn from 'classnames';
@@ -17,21 +23,6 @@ export const HeaderNav = () => {
   const searchRef = useRef<HTMLDivElement>(null);
   const currentPathname = usePathname();
 
-  const containerVariants = {
-    visible: { paddingLeft: '22px' },
-    hidden: { paddingLeft: '0px' },
-  };
-
-  const glassVariants = {
-    visible: { opacity: 1 },
-    hidden: { opacity: 0 },
-  };
-
-  const searchVariants = {
-    visible: { opacity: 1, width: 288, marginRight: -50 },
-    hidden: { opacity: 0, width: 0, marginRight: 0 },
-  };
-
   const handleToVisibleSearch = () => {
     setIsOpenSearch(true);
   };
@@ -41,9 +32,10 @@ export const HeaderNav = () => {
       <ul className={styles.links}>
         <li className={styles.item}>
           <Link
-            href='/catalog'
+            href={NavigationPathnames.CATALOG}
             className={cn(styles.link, {
-              [styles['link--active']]: currentPathname === '/catalog',
+              [styles['link--active']]:
+                currentPathname === NavigationPathnames.CATALOG,
             })}
           >
             Магазин
@@ -51,9 +43,10 @@ export const HeaderNav = () => {
         </li>
         <li className={styles.item}>
           <Link
-            href='/about-us'
+            href={NavigationPathnames.ABOUT_US}
             className={cn(styles.link, {
-              [styles['link--active']]: currentPathname === '/about-us',
+              [styles['link--active']]:
+                currentPathname === NavigationPathnames.ABOUT_US,
             })}
           >
             О нас
@@ -88,9 +81,10 @@ export const HeaderNav = () => {
         </motion.li>
         <li className={styles.item}>
           <Link
-            href='/shopping-cart'
+            href={NavigationPathnames.SHOPPING_CART}
             className={cn(styles.link, {
-              [styles['link--active']]: currentPathname === '/shopping-cart',
+              [styles['link--active']]:
+                currentPathname === NavigationPathnames.SHOPPING_CART,
             })}
           >
             <ProductsCounter icon='cart' count={1} />
@@ -98,10 +92,10 @@ export const HeaderNav = () => {
         </li>
         <li className={styles.item}>
           <Link
-            href='/catalog/favorites'
+            href={NavigationPathnames.FAVORITES}
             className={cn(styles.link, {
               [styles['link--active']]:
-                currentPathname === '/catalog/favorites',
+                currentPathname === NavigationPathnames.FAVORITES,
             })}
           >
             <ProductsCounter icon='favorite' />
@@ -109,9 +103,10 @@ export const HeaderNav = () => {
         </li>
         <li className={styles.item}>
           <Link
-            href='/account'
+            href={NavigationPathnames.ACCOUNT}
             className={cn(styles.link, {
-              [styles['link--active']]: currentPathname === '/account',
+              [styles['link--active']]:
+                currentPathname === NavigationPathnames.ACCOUNT,
             })}
           >
             <AccountIcon />

@@ -1,4 +1,5 @@
 import { ProductsCounter } from '@/components/products-counter';
+import { mobileMenuRoutes } from '@/shared/constants/navigation';
 import { AccountIcon } from '@/shared/icons/account';
 import { LogoutIcon } from '@/shared/icons/logout';
 import Link from 'next/link';
@@ -9,21 +10,15 @@ export const MobileMenuNav = () => {
   return (
     <nav className={styles.navigation}>
       <ul className={styles.links}>
-        <li className={styles.item}>
-          <Link href='/' className={styles.link}>
-            Главная
-          </Link>
-        </li>
-        <li className={styles.item}>
-          <Link href='/catalog' className={styles.link}>
-            Магазин
-          </Link>
-        </li>
-        <li className={styles.item}>
-          <Link href='/about-us' className={styles.link}>
-            О нас
-          </Link>
-        </li>
+        {mobileMenuRoutes.map((route) => (
+          <>
+            <li key={route} className={styles.item}>
+              <Link href={route} className={styles.link}>
+                Главная
+              </Link>
+            </li>
+          </>
+        ))}
       </ul>
       <ul className={styles.links}>
         <li className={styles.item}>

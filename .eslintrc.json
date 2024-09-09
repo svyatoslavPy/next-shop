@@ -10,13 +10,14 @@
   "plugins": ["react", "prettier"],
 
   "rules": {
+    "no-unused-vars": "off",
     "prettier/prettier": "error",
     "react/prop-types": 0,
-    "next-recommended/require-use-client": "warn",
-    "next-recommended/unnecessarily-client-declaration": "off",
+    "next-recommended/require-use-client": "error",
+    "next-recommended/unnecessarily-client-declaration": "warn",
     "next-recommended/async-component-no-hooks": "error",
-    "next-recommended/async-server-actions": "off",
-    "next-recommended/async-exported-server-actions": "off",
-    "next-recommended/export-server-actions-only": "warn"
+    "next-recommended/async-server-actions": "error",
+    "next-recommended/async-exported-server-actions": "error",
+    "next-recommended/export-server-actions-only": "error"
   }
 }
