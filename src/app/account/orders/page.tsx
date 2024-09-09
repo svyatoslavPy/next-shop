@@ -1,7 +1,6 @@
-export default function Account() {
+export default function Orders() {
   return (
     <>
-      <h1>Мой аккаунт</h1>
       <p>Мои заказы</p>
     </>
   );

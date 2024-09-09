@@ -1,6 +1,9 @@
+import { Footer } from '@/components/footer';
+import { Header } from '@/components/header';
 import type { Metadata } from 'next';
 import { DM_Sans } from 'next/font/google';
 import { ReactNode } from 'react';
+import { Toaster } from 'react-hot-toast';
 
 import '../styles/globals.scss';
 
@@ -18,7 +21,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='en'>
-      <body className={font.className}>{children}</body>
+      <body className={font.className}>
+        <div className='container page'>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <Toaster />
+        </div>
+      </body>
     </html>
   );
 }

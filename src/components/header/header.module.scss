@@ -1,0 +1,23 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.header {
+  margin-top: 48px;
+  border-bottom: 1px solid $gray-light;
+  padding-bottom: 17px;
+
+  @include phone-sm {
+    margin-top: 16px;
+  }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-self: flex-start;
+}
