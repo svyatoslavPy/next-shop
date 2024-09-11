@@ -1,7 +1,6 @@
 'use client';
 
 import { Notification } from '@/components/notification';
-import emailRegex from '@/shared/constants';
 import { ArrowIcon } from '@/shared/icons/arrow';
 import { Input } from '@/shared/ui/input';
 import {
@@ -14,6 +13,8 @@ import {
 import toast from 'react-hot-toast';
 
 import styles from './form.module.scss';
+
+const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
 export const Form = () => {
   const [emailQuery, setEmailQuery] = useState('');

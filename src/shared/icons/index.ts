@@ -1,5 +1,6 @@
 import { AccountIcon } from './account';
 import { ArrowIcon } from './arrow';
+import { ArrowPrimaryIcon } from './arrow/primary';
 import { CartIcon } from './cart';
 import { CloseIcon } from './close';
 import { FacebookIcon } from './facebook';
@@ -15,6 +16,7 @@ import { TwitterIcon } from './twitter';
 export {
   AccountIcon,
   ArrowIcon,
+  ArrowPrimaryIcon,
   CartIcon,
   CloseIcon,
   FacebookIcon,

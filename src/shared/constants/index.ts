@@ -1,2 +1,2 @@
-const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-export default emailRegex;
+export const perPage = 2;
+export const defaultPage = 1;

@@ -1,0 +1,89 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.wrapper {
+  max-width: 262px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-top: 1.6rem;
+  height: calc(#{$thumb-size} + 1.6rem);
+}
+
+.inputWrapper {
+  width: calc(100% + #{$thumb-size});
+  margin: 0 calc(#{$thumb-size} / -2);
+  position: absolute;
+  height: $thumb-size;
+}
+
+.controlWrapper {
+  width: 100%;
+  position: absolute;
+  height: $thumb-size;
+}
+
+.input {
+  position: absolute;
+  width: 100%;
+  pointer-events: none;
+  appearance: none;
+  height: 100%;
+  opacity: 0;
+  z-index: 3;
+  padding: 0;
+
+  &::-ms-track {
+    @include track-styles;
+  }
+
+  &::-moz-range-track {
+    @include track-styles;
+  }
+
+  &:focus::-webkit-slider-runnable-track {
+    @include track-styles;
+  }
+
+  &::-ms-thumb {
+    @include thumb-styles;
+  }
+
+  &::-moz-range-thumb {
+    @include thumb-styles;
+  }
+
+  &::-webkit-slider-thumb {
+    @include thumb-styles;
+  }
+};
+
+.rail {
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  border-radius: 3px;
+  background: lightgrey;
+}
+
+.innerRail {
+  position: absolute;
+  height: 100%;
+  background: $black;
+  opacity: 0.5;
+}
+
+.control {
+  width: $control-size;
+  height: $control-height;
+  position: absolute;
+  background: $black;
+  top: 50%;
+  margin-left: calc(#{$control-size} / -2);
+  transform: translate3d(0, -50%, 0);
+  z-index: 2;
+}
+
+

@@ -1,0 +1,27 @@
+@import '../../../styles/variables';
+
+.toggle {
+  display: flex;
+  align-items: center;
+  width: 33px;
+  height: 20px;
+  background-color: $gray-dark;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.circle::after {
+  display: block;
+  content: '';
+  width: 13px;
+  height: 13px;
+  transform: translateX(3px);
+  border-radius: 50%;
+  background-color: $white;
+  transition: all 0.2s;
+}
+
+.circle--active::after {
+  transform: translateX(calc(100% + 3px));
+}
