@@ -1,8 +1,8 @@
-import { ArrowPrimaryIcon } from '@/shared/icons';
+import { ArrowPrimaryIcon, CartIcon, FavoriteIcon } from '@/shared/icons';
 import cn from 'classnames';
 
 import styles from './button.module.scss';
-import { ButtonProps } from './button.props';
+import { ButtonProps, RequireAtLeastOne } from './button.props';
 
 export const Button = ({
   children,
@@ -10,14 +10,16 @@ export const Button = ({
   appearance,
   arrow = 'none',
   size,
+  icon,
   ...props
-}: ButtonProps) => {
+}: RequireAtLeastOne<ButtonProps>) => {
   return (
     <button
       className={cn(styles.button, className, {
         [styles.black]: appearance === 'black',
         [styles.white]: appearance === 'white',
-        [styles.small]: size === 'small',
+        [styles.hidden]: appearance === 'hidden',
+        [styles.normal]: size === 'full',
       })}
       {...props}>
       {children}
@@ -30,6 +32,9 @@ export const Button = ({
           <ArrowPrimaryIcon />
         </span>
       )}
+
+      {icon === 'cart' && <CartIcon />}
+      {icon === 'favorite' && <FavoriteIcon />}
     </button>
   );
 };

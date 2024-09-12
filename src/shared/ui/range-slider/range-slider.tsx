@@ -26,11 +26,10 @@ export const RangeSlider = ({
 
   const handleMinChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = parseFloat(e.target.value);
-    const newMinVal = Math.min(value, maxValue - step);
+    const newMinVal = Math.min(value, maxValue + step);
 
-    if (!value) {
-      setMinValue(newMinVal);
-    }
+    if (newMinVal > maxValue) return;
+    if (!value) setMinValue(newMinVal);
 
     onChange({ min: newMinVal, max: maxValue });
   };
@@ -39,9 +38,8 @@ export const RangeSlider = ({
     const value = parseFloat(e.target.value);
     const newMaxVal = Math.max(value, minValue - step);
 
-    if (!value) {
-      setMaxValue(newMaxVal);
-    }
+    if (newMaxVal < minValue) return;
+    if (!value) setMaxValue(newMaxVal);
 
     onChange({ min: minValue, max: newMaxVal });
   };
@@ -55,8 +53,9 @@ export const RangeSlider = ({
         Цена: - ${minValue} - ${maxValue}
       </p>
       <div className={styles.wrapper}>
-        <div className={styles.inputWrapper}>
+        <div tabIndex={0} className={styles.inputWrapper}>
           <Input
+            tabIndex={0}
             onChange={handleMinChange}
             className={styles.input}
             step={step}
@@ -66,6 +65,7 @@ export const RangeSlider = ({
             type='range'
           />
           <Input
+            tabIndex={0}
             type='range'
             className={styles.input}
             onChange={handleMaxChange}

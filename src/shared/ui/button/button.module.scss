@@ -4,11 +4,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
   background-color: transparent;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.hidden {
+  background-color: transparent;
+  border-radius: 4px;
 }
 
 .black {
@@ -26,9 +30,8 @@
   }
 }
 
-.small {
-  width: 40px;
-  padding: 10px 18px;
+.full {
+  width: 100%;
 }
 
 .icon {

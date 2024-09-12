@@ -12,9 +12,9 @@ export const MobileMenuNav = () => {
       <ul className={styles.links}>
         {mobileMenuRoutes.map((route) => (
           <>
-            <li key={route} className={styles.item}>
-              <Link href={route} className={styles.link}>
-                Главная
+            <li key={route.id} className={styles.item}>
+              <Link href={route.href} className={styles.link}>
+                {route.name}
               </Link>
             </li>
           </>

@@ -1,5 +1,6 @@
 'use client';
 
+import { useCreateQueryString } from '@/hooks/useCreateQueryString';
 import { GlassIcon } from '@/shared/icons/glass';
 import { Input } from '@/shared/ui/input';
 import cn from 'classnames';
@@ -20,9 +21,10 @@ export const Search = motion(
       const router = useRouter();
       const pathname = usePathname();
       const [searchQuery, setSearchQuery] = useState('');
+      const { createQueryString } = useCreateQueryString();
 
       const handleSearch = () => {
-        router.push(`${pathname}?search=${searchQuery}`);
+        router.push(`${pathname}?${createQueryString('search', searchQuery)}`);
       };
 
       const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {

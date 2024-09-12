@@ -1,6 +1,6 @@
 'use client';
 
-import { defaultPage } from '@/shared/constants';
+import { DEFAULT_PAGE } from '@/shared/constants';
 import { generatePageNumbers } from '@/utils/pagination';
 
 import { Button } from '../button/button';
@@ -9,7 +9,7 @@ import { PaginationProps } from './pagination.props';
 
 export const Pagination = ({
   pageCount,
-  currentPage = defaultPage,
+  currentPage = DEFAULT_PAGE,
   onChangePage,
 }: PaginationProps) => {
   const pages = generatePageNumbers(pageCount);
@@ -17,7 +17,7 @@ export const Pagination = ({
   return (
     <div className={styles.pagination}>
       <Button
-        size='small'
+        className={styles.button}
         appearance='white'
         arrow='left'
         onClick={() => onChangePage(currentPage - 1)}
@@ -25,7 +25,7 @@ export const Pagination = ({
       {pages.map((page) => (
         <>
           <Button
-            size='small'
+            className={styles.button}
             appearance={currentPage === page ? 'black' : 'white'}
             onClick={() => onChangePage(page)}>
             {page}
@@ -33,7 +33,7 @@ export const Pagination = ({
         </>
       ))}
       <Button
-        size='small'
+        className={styles.button}
         appearance='white'
         arrow='right'
         onClick={() => onChangePage(currentPage + 1)}

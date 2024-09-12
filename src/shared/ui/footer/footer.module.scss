@@ -1,11 +1,12 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
 
 .footer {
   display: flex;
   flex-direction: column;
   gap: 60px;
   margin-bottom: 92px;
+  margin-top: 250px;
 
   @include tablet-lg {
     gap: 30px;

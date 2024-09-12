@@ -1,2 +1,2 @@
-export const perPage = 2;
-export const defaultPage = 1;
+export const PER_PAGE = 6;
+export const DEFAULT_PAGE = 1;
