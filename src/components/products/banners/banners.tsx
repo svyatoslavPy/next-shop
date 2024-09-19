@@ -4,8 +4,11 @@ import { IProduct } from '@/shared/interfaces/product.interface';
 import cn from 'classnames';
 import Link from 'next/link';
 import 'swiper/css';
+import 'swiper/css/pagination';
+import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import '../../../styles/swiper.scss';
 import styles from './banners.module.scss';
 
 export const Banners = ({ products }: { products: IProduct[] }) => {
@@ -19,9 +22,16 @@ export const Banners = ({ products }: { products: IProduct[] }) => {
     },
   };
 
+  const pagination = {
+    clickable: true,
+    renderBullet: function (_index: number, className: string) {
+      return '<span class="' + className + '">' + '</span>';
+    },
+  };
+
   return (
     <div className={styles.banners}>
-      <Swiper {...swiperParams}>
+      <Swiper pagination={pagination} modules={[Pagination]} {...swiperParams}>
         {firstFourProducts.map((product) => (
           <SwiperSlide
             className={cn(styles.banner, {
