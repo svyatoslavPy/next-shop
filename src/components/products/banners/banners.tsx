@@ -25,7 +25,7 @@ export const Banners = ({ products }: { products: IProduct[] }) => {
         {firstFourProducts.map((product) => (
           <SwiperSlide
             className={cn(styles.banner, {
-              [styles['banner--empty']]: product.sku % 2 === 0,
+              [styles['banner--primary']]: product.sku % 2 === 0,
             })}>
             <p className={styles.title}>{product.name}</p>
             <p className={styles.price}>$ {product.price}</p>
