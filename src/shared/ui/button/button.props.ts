@@ -14,8 +14,8 @@ export interface ButtonProps
     HTMLButtonElement
   > {
   children?: ReactNode;
-  appearance: 'white' | 'black' | 'hidden';
-  size: 'full' | 'none';
+  appearance: 'white' | 'black' | 'none';
+  isFullWidth?: boolean;
   arrow?: 'left' | 'right' | 'none';
   icon?: 'cart' | 'favorite';
 }

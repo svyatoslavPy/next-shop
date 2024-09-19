@@ -1,5 +1,5 @@
-import styles from './products-counter.module.scss';
-import { ProductsCounterProps, icons } from './products-counter.props';
+import styles from './counter.module.scss';
+import { ProductsCounterProps, icons } from './counter.props';
 
 export const ProductsCounter = ({ icon, count }: ProductsCounterProps) => {
   const Icon = icons[icon];

@@ -1,4 +1,4 @@
-import { ProductsCounter } from '@/components/products-counter';
+import { ProductsCounter } from '@/components/products/counter';
 import { mobileMenuRoutes } from '@/shared/constants/navigation';
 import { AccountIcon } from '@/shared/icons/account';
 import { LogoutIcon } from '@/shared/icons/logout';

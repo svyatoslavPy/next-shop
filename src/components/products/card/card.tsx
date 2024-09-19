@@ -5,8 +5,8 @@ import { getOldPrice } from '@/utils';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import styles from './product-card.module.scss';
-import { ProductCardProps } from './product-card.props';
+import styles from './card.module.scss';
+import { ProductCardProps } from './card.props';
 
 export const ProductCard = ({
   id,
@@ -42,13 +42,13 @@ export const ProductCard = ({
         )}
         <div className={styles.preview}>
           <div className={styles.inner}>
-            <Button className={styles.button} appearance='hidden' icon='cart' />
+            <Button className={styles.button} appearance='none' icon='cart' />
             <Link href={`/catalog/product/${id}`}>
               <EyeIcon />
             </Link>
             <Button
               className={styles.button}
-              appearance='hidden'
+              appearance='none'
               icon='favorite'
             />
           </div>

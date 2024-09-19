@@ -1,4 +1,4 @@
-import { ProductsCounter } from '@/components/products-counter';
+import { ProductsCounter } from '@/components/products/counter';
 import { Search } from '@/components/search';
 import { LogoIcon } from '@/shared/icons/logo';
 import { IMenu } from '@/shared/interfaces/menu.interface';
@@ -14,8 +14,7 @@ export const MobileMenu = ({ onToogleMenu, isOpenMenu }: IMenu) => {
     <aside
       className={cn(styles.aside, {
         [styles.active]: isOpenMenu,
-      })}
-    >
+      })}>
       <div className={styles.asideHeader}>
         <Link href='/' className={styles.link}>
           <LogoIcon />

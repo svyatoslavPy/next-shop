@@ -1,6 +1,6 @@
 'use client';
 
-import { ProductsCounter } from '@/components/products-counter';
+import { ProductsCounter } from '@/components/products/counter';
 import { Search } from '@/components/search';
 import {
   containerVariants,
@@ -36,8 +36,7 @@ export const HeaderNav = () => {
             className={cn(styles.link, {
               [styles['link--active']]:
                 currentPathname === NavigationPathnames.CATALOG,
-            })}
-          >
+            })}>
             Магазин
           </Link>
         </li>
@@ -47,8 +46,7 @@ export const HeaderNav = () => {
             className={cn(styles.link, {
               [styles['link--active']]:
                 currentPathname === NavigationPathnames.ABOUT_US,
-            })}
-          >
+            })}>
             О нас
           </Link>
         </li>
@@ -57,8 +55,7 @@ export const HeaderNav = () => {
         initial='hidden'
         animate={isOpenSearch ? 'visible' : 'hidden'}
         variants={containerVariants}
-        className={cn(styles.links, styles['links--primary'])}
-      >
+        className={cn(styles.links, styles['links--primary'])}>
         <li className={styles.item}>
           <Search
             ref={searchRef}
@@ -75,8 +72,7 @@ export const HeaderNav = () => {
           animate={isOpenSearch ? 'hidden' : 'visible'}
           variants={glassVariants}
           style={{ pointerEvents: isOpenSearch ? 'none' : 'all' }}
-          className={styles.item}
-        >
+          className={styles.item}>
           <GlassIcon />
         </motion.li>
         <li className={styles.item}>
@@ -85,8 +81,7 @@ export const HeaderNav = () => {
             className={cn(styles.link, {
               [styles['link--active']]:
                 currentPathname === NavigationPathnames.SHOPPING_CART,
-            })}
-          >
+            })}>
             <ProductsCounter icon='cart' count={1} />
           </Link>
         </li>
@@ -96,8 +91,7 @@ export const HeaderNav = () => {
             className={cn(styles.link, {
               [styles['link--active']]:
                 currentPathname === NavigationPathnames.FAVORITES,
-            })}
-          >
+            })}>
             <ProductsCounter icon='favorite' />
           </Link>
         </li>
@@ -107,8 +101,7 @@ export const HeaderNav = () => {
             className={cn(styles.link, {
               [styles['link--active']]:
                 currentPathname === NavigationPathnames.ACCOUNT,
-            })}
-          >
+            })}>
             <AccountIcon />
           </Link>
         </li>

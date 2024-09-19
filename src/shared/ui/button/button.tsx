@@ -9,7 +9,7 @@ export const Button = ({
   className,
   appearance,
   arrow = 'none',
-  size,
+  isFullWidth = false,
   icon,
   ...props
 }: RequireAtLeastOne<ButtonProps>) => {
@@ -18,8 +18,8 @@ export const Button = ({
       className={cn(styles.button, className, {
         [styles.black]: appearance === 'black',
         [styles.white]: appearance === 'white',
-        [styles.hidden]: appearance === 'hidden',
-        [styles.normal]: size === 'full',
+        [styles.none]: appearance === 'none',
+        [styles.fullWidth]: isFullWidth,
       })}
       {...props}>
       {children}
