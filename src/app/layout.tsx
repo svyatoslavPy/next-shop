@@ -1,5 +1,5 @@
-import { Footer } from '@/components/footer';
-import { Header } from '@/components/header';
+import { Footer } from '@/shared/ui/footer';
+import { Header } from '@/shared/ui/header';
 import type { Metadata } from 'next';
 import { DM_Sans } from 'next/font/google';
 import { ReactNode } from 'react';

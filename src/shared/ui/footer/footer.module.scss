@@ -1,0 +1,67 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  margin-bottom: 92px;
+  margin-top: 250px;
+
+  @include tablet-lg {
+    gap: 30px;
+  }
+
+  @include tablet-md {
+    gap: 40px;
+  }
+
+  @include phone-sm {
+    margin-bottom: 43px;
+  }
+}
+
+.links {
+  display: flex;
+  column-gap: 29px;
+
+  @include tablet-lg {
+    column-gap: 15px;
+  }
+
+  @include device-custom (400) {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.link {
+  text-decoration: none;
+  color: $gray-dark;
+  font-size: 16px;
+  text-transform: uppercase;
+
+  @include tablet-lg {
+    font-size: 14px;
+  }
+
+  @include phone-md {
+    font-size: 12px;
+  }
+
+  &:hover {
+    color: $gray-secondary;
+  }
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include device-custom(840) {
+    flex-direction: column-reverse;
+    align-items:normal;
+    gap: 21px;
+  }
+}

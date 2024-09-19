@@ -5,7 +5,23 @@ import {
   TwitterIcon,
 } from '../icons';
 
-export const mobileMenuRoutes = ['/', '/catalog', '/about-us'];
+export const mobileMenuRoutes = [
+  {
+    id: 1,
+    name: 'Главная',
+    href: '/',
+  },
+  {
+    id: 2,
+    name: 'Магазин',
+    href: '/catalog',
+  },
+  {
+    id: 3,
+    name: 'О нас',
+    href: '/about-us',
+  },
+];
 export const socialNetworksRoutes = [
   {
     id: 1,

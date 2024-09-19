@@ -1,0 +1,6 @@
+.products {
+  margin-top: 39px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 86px 57px;
+}

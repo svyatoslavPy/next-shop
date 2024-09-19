@@ -1,0 +1,36 @@
+@import '../../../styles/variables';
+
+.selectWrapper {
+  position: relative;
+}
+
+.select, .selectWrapper {
+  width: 261px;
+}
+
+.select {
+  border: 1px solid $gray-light;
+  padding: 16px 23px 16px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.icon {
+  position: absolute;
+  right: 22px;
+  top: 20px;
+  
+  svg {
+    fill: $black;
+  }
+  
+  &--down {
+    transform: rotate(90deg);
+  }
+  
+  &--up {
+    transform: rotate(270deg);
+  }
+}
