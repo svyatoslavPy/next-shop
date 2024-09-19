@@ -1,6 +1,53 @@
+@import '../../styles/variables';
+
 .title {
   margin-top: 96px;
+  margin-bottom: 40px;
   font-weight: 500;
   font-size: 33px;
   line-height: 43px;
 }
+
+.wrapper {
+  display: grid;
+  column-gap: 35px;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.select {
+  margin-top: 39px;
+}
+
+.priceFilters {
+  margin-top: 23px;
+}
+
+.price {
+  margin-top: 8px;
+  font-size: 14px;
+  color: $gray-dark;
+}
+
+.toogleDiscount {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 39px;
+
+  p {
+    font-size: 16px;
+    font-weight: 400;
+    color: $black;
+  }
+}
+
+.content {
+  grid-area: 1 / 2 / 5 / 6
+ }
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 70px 24px;
+}
+

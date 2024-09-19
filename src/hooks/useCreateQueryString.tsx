@@ -9,7 +9,7 @@ export function useCreateQueryString() {
     const params = new URLSearchParams(searchParams.toString());
     params.set(name, value);
 
-    return params.toString();
+    return params;
   };
 
   return { createQueryString };

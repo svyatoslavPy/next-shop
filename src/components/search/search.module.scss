@@ -1,28 +1,60 @@
 @import '../../styles/variables';
 @import '../../styles/mixins';
 
-.search {
+.searchWrapper {
   width: 100%;
   position: relative;
-  
-  svg {
-    width: 12px;
-    height: 12px;
-    
-    path {
-      fill: $gray-dark;
-    }
+
+  &--white {
+    border-bottom: 1px solid $gray-light;
+    padding-bottom: 11px;
   }
 }
 
-.searchInput {
+
+.gray {
   padding-left: 30px;
   padding-top: 10px;
   padding-bottom: 10px;
 }
 
+.white {
+  outline: none;
+}
+
 .searchIcon {
+  cursor: pointer;
   position: absolute;
-  left: 10px;
-  transform: translateY(11px);
+  
+  &--left {
+    left: 10px;
+    transform: translateY(11px);
+  }
+
+  &--right {
+    right: 0;
+    transform: translateY(-5px);
+  }
+
+  &--gray {
+    svg {
+      width: 12px;
+      height: 12px;
+  
+      path {
+        fill: $gray-dark;
+      }
+    }
+  }
+
+  &--black {
+    svg {
+      width: 19px;
+      height: 19px;
+  
+      path {
+        border: 1px solid $black;
+      }
+    }
+  }
 }

@@ -1,14 +1,15 @@
 import { ProductCard } from '../product-card';
-import styles from './products.module.scss';
 import { ProductsProps } from './products.props';
 
 export const Products = ({
   products,
   isHaveOldPrice = false,
   isHaveDiscount = false,
+  className,
+  ...props
 }: ProductsProps) => {
   return (
-    <section className={styles.products}>
+    <section className={className} {...props}>
       {products.map((product) => (
         <ProductCard
           key={product.sku}

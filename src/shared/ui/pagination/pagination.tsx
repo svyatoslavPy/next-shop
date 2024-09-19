@@ -3,23 +3,26 @@
 import { useCreateQueryString } from '@/hooks/useCreateQueryString';
 import { DEFAULT_PAGE } from '@/shared/constants';
 import { generatePageNumbers } from '@/utils/pagination';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import { Button } from '../button/button';
 import styles from './pagination.module.scss';
-import { PaginationProps } from './pagination.props';
 
-export const Pagination = ({ currentPage, pageCount }: PaginationProps) => {
+export const Pagination = ({ pageCount }: { pageCount: number }) => {
+  const searchParams = useSearchParams();
   const pages = generatePageNumbers(pageCount);
   const router = useRouter();
   const pathname = usePathname();
+
+  const currentPage = Number(searchParams.get('page')) || DEFAULT_PAGE;
 
   const { createQueryString } = useCreateQueryString();
 
   const handleChangePage = (page: number) => {
     if (page < DEFAULT_PAGE || page > pageCount) return;
+    const params = createQueryString('page', page.toString());
 
-    router.push(`${pathname}?${createQueryString('page', page.toString())}`);
+    router.push(`${pathname}?${params.toString()}`);
   };
 
   return (

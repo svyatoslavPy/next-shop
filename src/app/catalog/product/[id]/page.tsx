@@ -1,8 +1,7 @@
 import { client } from '@/api';
-import { MAX_LIMIT_PRODUCTS } from '@/shared/constants/api';
 
 export async function generateStaticParams() {
-  const { products } = await client.getProducts(MAX_LIMIT_PRODUCTS);
+  const { products } = await client.getProducts();
 
   return products.map((product) => ({
     id: product.sku.toString(),

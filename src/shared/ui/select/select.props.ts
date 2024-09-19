@@ -1,6 +1,7 @@
+import { Option } from '@/shared/interfaces/option.interface';
+
 export interface SelectProps {
-  onChange: (option: string) => void;
-  options: string[];
-  selectedOption: string;
-  arrow?: 'up' | 'down' | 'none';
+  options: Option[];
+  urlQuery: string;
+  className?: string;
 }

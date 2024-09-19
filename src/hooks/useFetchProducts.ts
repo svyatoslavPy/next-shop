@@ -1,7 +1,7 @@
 'use client';
 
 import { client } from '@/api';
-import { MAX_LIMIT_PRODUCTS } from '@/shared/constants/api';
+import { DEFAULT_LIMIT_PRODUCTS } from '@/shared/constants/api';
 import { IProducts } from '@/shared/interfaces/products.interface';
 import { useEffect, useState } from 'react';
 
@@ -21,7 +21,7 @@ export function useFetchProducts() {
     setLoading(true);
 
     client
-      .getProducts(MAX_LIMIT_PRODUCTS)
+      .getProducts(DEFAULT_LIMIT_PRODUCTS)
       .then((data) => {
         setProducts(data);
       })

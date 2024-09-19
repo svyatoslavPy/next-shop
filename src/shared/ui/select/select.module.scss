@@ -4,8 +4,11 @@
   position: relative;
 }
 
-.select {
+.select, .selectWrapper {
   width: 261px;
+}
+
+.select {
   border: 1px solid $gray-light;
   padding: 16px 23px 16px 12px;
   border-radius: 4px;
@@ -16,17 +19,18 @@
 
 .icon {
   position: absolute;
-  transform: translateX(-23px) translateY(20px);
+  right: 22px;
+  top: 20px;
   
   svg {
     fill: $black;
   }
   
   &--down {
-    transform: translateX(-23px) translateY(20px) rotate(90deg);
+    transform: rotate(90deg);
   }
   
   &--up {
-    transform: translateX(-23px) translateY(20px) rotate(270deg);
+    transform: rotate(270deg);
   }
 }
