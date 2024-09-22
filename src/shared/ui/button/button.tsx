@@ -18,6 +18,7 @@ export const Button = ({
       className={cn(styles.button, className, {
         [styles.black]: appearance === 'black',
         [styles.white]: appearance === 'white',
+        [styles.ghost]: appearance === 'ghost',
         [styles.none]: appearance === 'none',
         [styles.fullWidth]: isFullWidth,
       })}

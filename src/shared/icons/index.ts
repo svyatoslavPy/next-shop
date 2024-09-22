@@ -11,6 +11,7 @@ import { InstagramIcon } from './instagram';
 import { LinkedinIcon } from './linkedin';
 import { LogoIcon } from './logo';
 import { LogoutIcon } from './logout';
+import { StarIcon } from './star';
 import { SuccessIcon } from './success';
 import { TwitterIcon } from './twitter';
 
@@ -28,6 +29,7 @@ export {
   LinkedinIcon,
   LogoIcon,
   LogoutIcon,
+  StarIcon,
   SuccessIcon,
   TwitterIcon,
 };

@@ -1,0 +1,27 @@
+@import '../../../styles/variables';
+
+.product {
+  display: grid;
+  grid-template-columns: 120px 39px [middle] 540px 62px [before-end] 1fr;
+  margin-top: 128px;
+}
+
+.productsImages {
+  display: grid;
+  gap: 40px;
+}
+
+.productPicture {
+  transition: all 0.1s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.generalPicture {
+  grid-column: middle / before-end;
+}
+
+
+

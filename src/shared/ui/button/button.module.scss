@@ -29,6 +29,12 @@
   }
 }
 
+.ghost {
+  color: $black;
+  border: none;
+  outline: 1px solid $black;
+}
+
 .fullWidth {
   width: 100%;
 }

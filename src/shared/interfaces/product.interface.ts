@@ -1,10 +1,12 @@
+import { Review } from './review.interface';
+
 export interface IProduct {
   name: string;
   price: number;
   discount?: number;
-  description: string[];
+  description: string;
   categoryId: number;
   sku: number;
-  reviews: string[];
+  reviews: Review[];
   images: string[];
 }

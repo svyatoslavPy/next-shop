@@ -13,8 +13,8 @@ export interface ButtonProps
     ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
+  appearance: 'white' | 'black' | 'ghost' | 'none';
   children?: ReactNode;
-  appearance: 'white' | 'black' | 'none';
   isFullWidth?: boolean;
   arrow?: 'left' | 'right' | 'none';
   icon?: 'cart' | 'favorite';

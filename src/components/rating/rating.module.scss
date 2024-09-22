@@ -1,0 +1,15 @@
+@import '../../styles/variables';
+
+.rating {
+  display: flex;
+  column-gap: 10px;
+}
+
+.editable svg {
+  cursor: pointer;
+}
+
+.filled svg {
+  fill: $black;
+  opacity: 1;
+}

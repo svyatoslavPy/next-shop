@@ -34,22 +34,22 @@ export const Form = () => {
   };
 
   const handleSubscribe = (e: KeyboardEvent) => {
-    if (e.key === 'Enter') {
-      if (!emailQuery || !isValidEmail) {
-        toast.custom(<Notification icon='close' message='Неверная почта' />, {
-          position: 'bottom-center',
-        });
+    if (e.key !== 'Enter') return;
 
-        setIsSumbit(false);
-        return;
-      }
-
-      setIsSumbit(true);
-
-      toast.custom(<Notification icon='success' message='Подписка сделана' />, {
+    if (!emailQuery || !isValidEmail) {
+      toast.custom(<Notification icon='close' message='Неверная почта' />, {
         position: 'bottom-center',
       });
+
+      setIsSumbit(false);
+      return;
     }
+
+    setIsSumbit(true);
+
+    toast.custom(<Notification icon='success' message='Подписка сделана' />, {
+      position: 'bottom-center',
+    });
   };
 
   const reset = () => {
