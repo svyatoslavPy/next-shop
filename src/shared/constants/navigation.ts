@@ -22,7 +22,8 @@ export const mobileMenuRoutes = [
     href: '/about-us',
   },
 ];
-export const socialNetworksRoutes = [
+
+export const footerSocialNetworksRoutes = [
   {
     id: 1,
     href: '#',
@@ -44,3 +45,7 @@ export const socialNetworksRoutes = [
     icon: TwitterIcon,
   },
 ];
+
+export const productSocialNetworksRoutes = footerSocialNetworksRoutes.filter(
+  (route) => route.icon !== LinkedinIcon,
+);

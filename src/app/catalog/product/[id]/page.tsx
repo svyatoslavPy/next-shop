@@ -2,7 +2,8 @@
 
 import { client } from '@/api';
 import { ProductDetails } from '@/components/product-details';
-import { getRating } from '@/utils';
+import { ProductExamples } from '@/components/products/examples';
+import { getRatingByReviews } from '@/utils';
 import Image from 'next/image';
 
 import styles from '../product.module.scss';
@@ -17,31 +18,24 @@ export async function generateStaticParams() {
 
 export default async function Product({ params }: { params: { id: string } }) {
   const product = await client.getProduct(+params.id);
-  const { images, reviews, price, name, description } = product;
+  const { images, reviews, price, name, description, categoryId } = product;
 
-  const productImages = images.slice(0, images.length - 1);
-  const rating = await getRating(reviews);
+  const { categories } = await client.getFilters();
+  const category = categories.find((item) => item.id === categoryId);
+
+  const examplesOfProduct = images.slice(0, images.length - 1);
+  const rating = await getRatingByReviews(reviews);
 
   return (
     <section className={styles.product}>
-      <div className={styles.productsImages}>
-        {productImages.map((imageUrl) => (
-          <Image
-            key={imageUrl}
-            className={styles.productPicture}
-            width={120}
-            height={120}
-            src={imageUrl}
-            alt='product'
-          />
-        ))}
-      </div>
+      <ProductExamples images={examplesOfProduct} />
 
       <Image
         className={styles.generalPicture}
         src={images[images.length - 1]}
         width={540}
         height={600}
+        quality={100}
         alt='product'
       />
 
@@ -50,6 +44,8 @@ export default async function Product({ params }: { params: { id: string } }) {
         price={price}
         description={description}
         rating={rating}
+        id={+params.id}
+        category={category?.name || ''}
         countReviews={reviews.length}
       />
     </section>

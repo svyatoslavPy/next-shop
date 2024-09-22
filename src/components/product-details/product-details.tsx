@@ -1,4 +1,8 @@
+import { productSocialNetworksRoutes } from '@/shared/constants/navigation';
+import { FavoriteIcon } from '@/shared/icons';
+import { EmailIcon } from '@/shared/icons/email';
 import { Button } from '@/shared/ui/button';
+import Link from 'next/link';
 
 import { Rating } from '../rating';
 import styles from './product-details.module.scss';
@@ -9,6 +13,8 @@ export const ProductDetails = ({
   price,
   description,
   countReviews,
+  category,
+  id,
   rating,
 }: ProductDetailsProps) => {
   return (
@@ -40,6 +46,38 @@ export const ProductDetails = ({
           isFullWidth>
           Добавить в корзину
         </Button>
+      </div>
+
+      <div className={styles.wrapperIcons}>
+        <div className={styles.favoriteInner}>
+          <span className={styles.icon}>
+            <FavoriteIcon />
+          </span>
+
+          <span className={styles.line}></span>
+        </div>
+
+        <ul className={styles.socialNetworks}>
+          <li className={styles.item}>
+            <EmailIcon />
+          </li>
+
+          {productSocialNetworksRoutes.map((route) => (
+            <li className={styles.item} key={route.id}>
+              <Link href={route.href}>{<route.icon />}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div className={styles.infoWrapper}>
+        <p className={styles.info}>
+          SKU: <span>{id}</span>
+        </p>
+
+        <p className={styles.info}>
+          Категория: <span>{category}</span>
+        </p>
       </div>
     </div>
   );

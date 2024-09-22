@@ -7,7 +7,7 @@ export const getOldPrice = (price: number, discount: number) => {
   return result;
 };
 
-export const getRating = async (reviews: Review[]) => {
+export const getRatingByReviews = async <T extends Review>(reviews: T[]) => {
   let sum = 0;
 
   for (const review of reviews) {

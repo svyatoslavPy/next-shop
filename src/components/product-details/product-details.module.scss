@@ -65,3 +65,60 @@
   padding-bottom: 16px;
 }
 
+.wrapperIcons {
+  display: flex;
+  column-gap: 39px;
+  margin-top: 80px;
+}
+
+.favoriteInner {
+  display: flex;
+  align-items: center;
+
+  svg {
+    fill: $gray-dark;
+  }
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.line {
+  width: 1px;
+  height: 20px;
+  background-color: $gray-light;
+  margin-left: 39px;
+}
+
+.socialNetworks {
+  display: flex;
+  align-items: center;
+  column-gap: 25px;
+}
+
+.item {
+  cursor: pointer;
+  transition: all 0.1s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.infoWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 37px;
+}
+
+.info {
+  color: $black;
+  font-size: 16px;
+
+  span {
+    margin-left: 16px;
+    color: $gray-dark;
+  }
+}

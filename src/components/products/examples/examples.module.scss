@@ -1,0 +1,12 @@
+.wrapper {
+  display: grid;
+  gap: 40px;
+}
+
+.picture {
+  transition: all 0.1s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}

@@ -15,7 +15,7 @@ export const Rating = ({ initialRating, isEditable = false }: RatingProps) => {
   const rating = Number(searchParams.get('rating')) || initialRating;
 
   const [ratingArray, setRatingArray] = useState<JSX.Element[]>(
-    new Array(LENGTH_RATING).fill(<></>),
+    new Array(LENGTH_RATING).fill(<StarIcon />),
   );
 
   const pathname = usePathname();
