@@ -11,6 +11,7 @@ export const ProductExamples = ({ images }: { images: string[] }) => {
           className={styles.picture}
           width={120}
           height={120}
+          priority
           src={imageUrl}
           alt='product'
         />

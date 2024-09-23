@@ -12,7 +12,6 @@ import '../../../styles/swiper.scss';
 import styles from './banners.module.scss';
 
 export const Banners = ({ products }: { products: IProduct[] }) => {
-  const firstFourProducts = products.slice(0, 4);
   const swiperParams = {
     spaceBetween: 0,
     slidesPerView: 1,
@@ -32,7 +31,7 @@ export const Banners = ({ products }: { products: IProduct[] }) => {
   return (
     <div className={styles.banners}>
       <Swiper pagination={pagination} modules={[Pagination]} {...swiperParams}>
-        {firstFourProducts.map((product) => (
+        {products.map((product) => (
           <SwiperSlide
             className={cn(styles.banner, {
               [styles['banner--primary']]: product.sku % 2 === 0,

@@ -1,18 +1,13 @@
 'use client';
 
 import { useCreateQueryString } from '@/hooks/useCreateQueryString';
+import { useKeyDown } from '@/hooks/useKeyDown';
 import { GlassIcon } from '@/shared/icons/glass';
 import { Input } from '@/shared/ui/input';
 import cn from 'classnames';
 import { motion } from 'framer-motion';
 import { usePathname, useRouter } from 'next/navigation';
-import {
-  ChangeEvent,
-  ForwardedRef,
-  KeyboardEvent,
-  forwardRef,
-  useState,
-} from 'react';
+import { ChangeEvent, ForwardedRef, forwardRef, useState } from 'react';
 
 import styles from './search.module.scss';
 import { SearchProps } from './search.props';
@@ -48,11 +43,9 @@ export const Search = motion(
         setSearchQuery(e.target.value);
       };
 
-      const handleKeyDown = (e: KeyboardEvent) => {
-        if (e.key === 'Enter') {
-          handleSearch();
-        }
-      };
+      useKeyDown('Enter', () => {
+        handleSearch();
+      });
 
       return (
         <div
@@ -62,7 +55,6 @@ export const Search = motion(
           {...props}
           ref={ref}>
           <Input
-            onKeyDown={handleKeyDown}
             onChange={handleChangeQuery}
             placeholder={placeholder}
             value={searchQuery}

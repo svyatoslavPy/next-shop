@@ -8,10 +8,11 @@ import styles from './page.module.scss';
 
 export default async function Home() {
   const { products } = await client.getProducts(MIN_LIMIT_PRODUCTS);
+  const firstFourProducts = products.slice(0, 4);
 
   return (
     <>
-      <Banners products={products} />
+      <Banners products={firstFourProducts} />
       <div className={styles.heading}>
         <p className={styles.title}>Последние поступления</p>
         <Link href='/catalog' className={styles.link}>
