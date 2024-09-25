@@ -50,7 +50,7 @@
 .link {
   text-decoration: none;
   color: $black;
-
+  
   &:hover {
     color: $gray-secondary;
   }
@@ -59,10 +59,8 @@
     display: block;
     content: '';
     width: 0%;
-    height: 2.5px;
-    background-color: $black;
-    position: absolute;
-    transform: translateY(17px);
+    border-bottom: 2px solid $black;
+    transform: translateY(20px);
     transition: all 0.2s;
   }
 

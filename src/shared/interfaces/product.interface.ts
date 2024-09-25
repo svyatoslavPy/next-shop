@@ -1,4 +1,4 @@
-import { Review } from './review.interface';
+import { IReview } from './review.interface';
 
 export interface IProduct {
   name: string;
@@ -7,6 +7,6 @@ export interface IProduct {
   description: string;
   categoryId: number;
   sku: number;
-  reviews: Review[];
+  reviews: IReview[];
   images: string[];
 }

@@ -1,3 +1,3 @@
-import { Category } from './filter-category.interface';
+import { ICategory } from './filter-category.interface';
 
-export interface Option extends Category {}
+export interface IOption extends ICategory {}

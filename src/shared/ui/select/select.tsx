@@ -10,12 +10,18 @@ import { ChangeEvent } from 'react';
 import styles from './select.module.scss';
 import { SelectProps } from './select.props';
 
-export const Select = ({ options, className, urlQuery }: SelectProps) => {
+export const Select = ({
+  options,
+  initialOption,
+  className,
+  urlQuery,
+}: SelectProps) => {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const router = useRouter();
 
-  const currentOption = searchParams.get(urlQuery) || '';
+  const currentOption = searchParams.get(urlQuery) || initialOption;
+
   const { createQueryString } = useCreateQueryString();
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -31,8 +37,8 @@ export const Select = ({ options, className, urlQuery }: SelectProps) => {
   return (
     <div className={cn(styles.selectWrapper, className)}>
       <select
-        className={styles.select}
         value={currentOption}
+        className={styles.select}
         onChange={handleChange}>
         {options.map((optionValue) => (
           <option key={optionValue.id} value={optionValue.id}>
@@ -41,11 +47,7 @@ export const Select = ({ options, className, urlQuery }: SelectProps) => {
         ))}
       </select>
 
-      <span
-        className={cn(styles.icon, {
-          [styles['icon--up']]: currentOption,
-          [styles['icon--down']]: !currentOption,
-        })}>
+      <span className={cn(styles.icon, [styles['icon--up']])}>
         <ArrowPrimaryIcon />
       </span>
     </div>

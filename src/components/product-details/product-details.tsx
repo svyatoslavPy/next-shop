@@ -1,8 +1,12 @@
+'use client';
+
+import { DEFAULT_PRODUCT_QUANTITY } from '@/shared/constants';
 import { productSocialNetworksRoutes } from '@/shared/constants/navigation';
 import { FavoriteIcon } from '@/shared/icons';
 import { EmailIcon } from '@/shared/icons/email';
 import { Button } from '@/shared/ui/button';
 import Link from 'next/link';
+import { useState } from 'react';
 
 import { Rating } from '../rating';
 import styles from './product-details.module.scss';
@@ -17,6 +21,20 @@ export const ProductDetails = ({
   id,
   rating,
 }: ProductDetailsProps) => {
+  const [productQuantity, setProductQuantity] = useState(
+    DEFAULT_PRODUCT_QUANTITY,
+  );
+
+  const handleIncrease = () => {
+    setProductQuantity((currentQuantity) => currentQuantity + 1);
+  };
+
+  const handleDecrease = () => {
+    if (productQuantity === DEFAULT_PRODUCT_QUANTITY) return;
+
+    setProductQuantity((currentQuantity) => currentQuantity - 1);
+  };
+
   return (
     <div className={styles.details}>
       <h1 className={styles.title}>{name}</h1>
@@ -31,11 +49,17 @@ export const ProductDetails = ({
 
       <div className={styles.actionsWrapper}>
         <div className={styles.quantity}>
-          <Button className={styles.quantityButton} appearance='none'>
+          <Button
+            onClick={handleDecrease}
+            className={styles.quantityButton}
+            appearance='none'>
             -
           </Button>
-          <p>1</p>
-          <Button className={styles.quantityButton} appearance='none'>
+          <p>{productQuantity}</p>
+          <Button
+            onClick={handleIncrease}
+            className={styles.quantityButton}
+            appearance='none'>
             +
           </Button>
         </div>

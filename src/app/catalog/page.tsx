@@ -3,15 +3,38 @@
 import { client } from '@/api';
 import { Products } from '@/components/products';
 import { Search } from '@/components/search';
-import { DEFAULT_PAGE, PER_PAGE } from '@/shared/constants';
+import {
+  DEFAULT_CATEGORY_ID,
+  DEFAULT_PAGE,
+  PER_PAGE,
+} from '@/shared/constants';
 import { DEFAULT_LIMIT_PRODUCTS } from '@/shared/constants/api';
+import { ProductSelect } from '@/shared/enums/product-select.enum';
 import { Pagination } from '@/shared/ui/pagination';
 import { RangeSlider } from '@/shared/ui/range-slider';
 import { Select } from '@/shared/ui/select';
 import { Toggle } from '@/shared/ui/toggle';
 import { getPaginatedItems } from '@/utils/pagination';
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 import styles from './catalog.module.scss';
+
+export const generateMetadata = async ({
+  searchParams,
+}: {
+  searchParams: { categoryId: number };
+}): Promise<Metadata> => {
+  const { categories } = await client.getFilters();
+  const category = categories.find(
+    (item) => item.id === +searchParams.categoryId || DEFAULT_CATEGORY_ID,
+  );
+
+  return {
+    title: `Товары - ${category?.name}`,
+    description: 'Shoppee магазин',
+  };
+};
 
 export default async function Catalog({
   searchParams,
@@ -45,6 +68,10 @@ export default async function Catalog({
   const pageCount = Math.ceil(totalProducts / PER_PAGE);
   const paginatedItems = getPaginatedItems(products, currentPage, PER_PAGE);
 
+  if (!paginatedItems.length) {
+    return notFound();
+  }
+
   return (
     <>
       <h1 className={styles.title}>Каталог товаров</h1>
@@ -59,6 +86,7 @@ export default async function Catalog({
         <Select
           className={styles.select}
           options={categories}
+          initialOption={ProductSelect.Hairpins}
           urlQuery='categoryId'
         />
 

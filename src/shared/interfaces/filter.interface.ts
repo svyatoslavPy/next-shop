@@ -1,7 +1,7 @@
-import { Category } from './filter-category.interface';
+import { ICategory } from './filter-category.interface';
 
-export interface Filter {
-  categories: Category[];
+export interface IFilter {
+  categories: ICategory[];
   minPrice: number;
   maxPrice: number;
 }

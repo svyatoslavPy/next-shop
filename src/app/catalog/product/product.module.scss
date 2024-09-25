@@ -4,11 +4,13 @@
   display: grid;
   grid-template-columns: 120px 39px [middle] 540px 62px [before-end] 1fr;
   margin-top: 128px;
+  margin-bottom: 100px;
 }
 
-.generalPicture {
-  grid-column: middle / before-end;
+.description {
+  font-size: 16px;
+  line-height: 27px;
+  color: $gray-dark;
+  margin-top: 24px;
 }
-
-
 

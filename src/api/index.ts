@@ -1,5 +1,5 @@
 import { BASE_API, DEFAULT_LIMIT_PRODUCTS } from '@/shared/constants/api';
-import { Filter } from '@/shared/interfaces/filter.interface';
+import { IFilter } from '@/shared/interfaces/filter.interface';
 import { IProduct } from '@/shared/interfaces/product.interface';
 import { IProducts } from '@/shared/interfaces/products.interface';
 import axios, { AxiosResponse } from 'axios';
@@ -47,7 +47,7 @@ export const client = {
   getProduct: (id: number): Promise<IProduct> => {
     return requests.get(`products/sku/${id}`);
   },
-  getFilters: (): Promise<Filter> => {
+  getFilters: (): Promise<IFilter> => {
     return requests.get('products/get-filter');
   },
 };
