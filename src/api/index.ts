@@ -2,6 +2,7 @@ import { BASE_API, DEFAULT_LIMIT_PRODUCTS } from '@/shared/constants/api';
 import { IFilter } from '@/shared/interfaces/filter.interface';
 import { IProduct } from '@/shared/interfaces/product.interface';
 import { IProducts } from '@/shared/interfaces/products.interface';
+import { IReviewForm } from '@/shared/interfaces/review-form.interface';
 import axios, { AxiosResponse } from 'axios';
 
 const instance = axios.create({
@@ -46,6 +47,9 @@ export const client = {
     }),
   getProduct: (id: number): Promise<IProduct> => {
     return requests.get(`products/sku/${id}`);
+  },
+  createReview: (id: number, review: IReviewForm): Promise<IReviewForm> => {
+    return requests.post(`products/sku/${id}/review`, review);
   },
   getFilters: (): Promise<IFilter> => {
     return requests.get('products/get-filter');

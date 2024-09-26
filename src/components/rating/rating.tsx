@@ -10,7 +10,12 @@ import { KeyboardEvent, useEffect, useState } from 'react';
 import styles from './rating.module.scss';
 import { RatingProps } from './rating.props';
 
-export const Rating = ({ initialRating, isEditable = false }: RatingProps) => {
+export const Rating = ({
+  initialRating,
+  isEditable = false,
+  className,
+  ...props
+}: RatingProps) => {
   const searchParams = useSearchParams();
   const rating = Number(searchParams.get('rating')) || initialRating;
 
@@ -67,7 +72,7 @@ export const Rating = ({ initialRating, isEditable = false }: RatingProps) => {
   };
 
   return (
-    <div className={styles.rating}>
+    <div className={cn(styles.rating, className)} {...props}>
       {ratingArray.map((r, i) => (
         <span key={i}>{r}</span>
       ))}

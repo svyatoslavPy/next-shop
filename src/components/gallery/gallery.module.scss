@@ -1,9 +1,15 @@
 @import '../../styles/variables';
 
-$width-active-line: 206px;
-$width-picture: 540px;
-
 .wrapper {
+  display: flex;
+  gap: 40px;
+}
+
+.gallery {
+  display: grid;
+}
+
+.pictures {
   display: grid;
   gap: 40px;
 }
@@ -24,29 +30,25 @@ $width-picture: 540px;
 
 
 .generalPicture {
-  grid-column: middle / before-end;
+  // grid-column: middle / before-end;
   position: relative;
-  
-  &::before {
-    display: block;
-    content: '';
-    width: $width-active-line;
+}
+
+.control {
+  height: 2px;
+  position: absolute;
+  transition: all 0.2s;
+  bottom: -24px;
+  background-color: $gray-light;
+
+  &--active {
     height: 2px;
     position: absolute;
     background-color: $gray-dark;
-  }
-  
-  &::after {
-    display: block;
-    content: '';
-    width: calc($width-picture - $width-active-line);
-    height: 2px;
-    transform: translateX($width-active-line);
-    position: absolute;
-    background-color: $gray-light;
-  }
-
-  &::before, &::after {
-    bottom: -24px;
+    left: 0px;
+    z-index: 2;
   }
 }
+
+
+

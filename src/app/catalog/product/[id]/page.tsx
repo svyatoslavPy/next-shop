@@ -3,6 +3,8 @@
 import { client } from '@/api';
 import { Gallery } from '@/components/gallery';
 import { ProductDetails } from '@/components/product-details';
+import { ReviewForm } from '@/components/reviews/form';
+import { Reviews } from '@/components/reviews/reviews';
 import { Tabs } from '@/components/tabs';
 import { PRODUCT_TABS } from '@/shared/constants';
 import { ProductTabs } from '@/shared/enums/product-tabs.enum';
@@ -44,7 +46,8 @@ export default async function Product({
   searchParams: { tabId: number };
 }) {
   const product = await client.getProduct(+params.id);
-  const { images, reviews, price, name, description, categoryId } = product;
+  const { sku, images, reviews, price, name, description, categoryId } =
+    product;
 
   const { categories } = await client.getFilters();
   const category = categories.find((item) => item.id === categoryId);
@@ -64,7 +67,7 @@ export default async function Product({
   return (
     <>
       <section className={styles.product}>
-        <Gallery images={productsImages} />
+        <Gallery className={styles.gallery} images={productsImages} />
 
         <ProductDetails
           name={name}
@@ -84,8 +87,9 @@ export default async function Product({
       )}
 
       {currentTab?.name === ProductTabs.Reviews && (
-        <section>
-          <p>Reviews</p>
+        <section className={styles.reviews}>
+          <Reviews reviews={reviews} />
+          <ReviewForm productId={sku} />
         </section>
       )}
     </>

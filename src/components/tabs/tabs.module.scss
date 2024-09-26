@@ -32,6 +32,7 @@
   
   &--active {
     color: $black;
+    
     &::after {
       opacity: 1;
     }

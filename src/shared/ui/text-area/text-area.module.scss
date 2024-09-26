@@ -1,0 +1,14 @@
+@import '../../../styles/variables';
+
+.textarea {
+  border: none;
+  padding-bottom: 61px;
+  border-bottom: 1px solid $gray-light;
+  outline: none;
+  resize: none;
+
+  &::placeholder {
+    font-size: 14px;
+    color: $gray-dark;
+  }
+}

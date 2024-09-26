@@ -1,6 +1,6 @@
 import { PRODUCT_TABS } from '@/shared/constants';
 import { ProductTabs } from '@/shared/enums/product-tabs.enum';
-import { Review } from '@/shared/interfaces/review.interface';
+import { IReview } from '@/shared/interfaces/review.interface';
 import { ITab } from '@/shared/interfaces/tab.interface';
 
 export const getOldPrice = (price: number, discount: number) => {
@@ -10,7 +10,7 @@ export const getOldPrice = (price: number, discount: number) => {
   return result;
 };
 
-export const getRatingByReviews = async <T extends Review>(reviews: T[]) => {
+export const getRatingByReviews = async <T extends IReview>(reviews: T[]) => {
   let sum = 0;
 
   for (const review of reviews) {

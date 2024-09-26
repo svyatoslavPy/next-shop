@@ -16,3 +16,4 @@ export const PRODUCT_TABS = [
 
 export const DEFAULT_CATEGORY_ID = 1;
 export const FIRST_IMAGE_INDEX = 0;
+export const GALLERY_WIDTH = 540;

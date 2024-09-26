@@ -1,7 +1,6 @@
 import { DetailedHTMLProps, HTMLAttributes } from 'react';
 
-export interface RatingProps
+export interface GalleryProps
   extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
-  initialRating: number;
-  isEditable?: boolean;
+  images: string[];
 }

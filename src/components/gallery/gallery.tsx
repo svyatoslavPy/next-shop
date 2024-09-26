@@ -1,54 +1,63 @@
 'use client';
 
-import { useCreateQueryString } from '@/hooks/useCreateQueryString';
+import { GALLERY_WIDTH } from '@/shared/constants';
 import cn from 'classnames';
 import Image from 'next/image';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 
 import styles from './gallery.module.scss';
+import { GalleryProps } from './gallery.props';
 
-export const Gallery = ({ images }: { images: string[] }) => {
-  const pathname = usePathname();
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const currentImageIndex = Number(searchParams.get('imageIndex'));
+export const Gallery = ({ images, className, ...props }: GalleryProps) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  const { createQueryString } = useCreateQueryString();
-
-  const handleChangePhoto = (imageIndex: number) => {
-    const params = createQueryString('imageIndex', imageIndex.toString());
-
-    router.push(`${pathname}?${params.toString()}`);
+  const handleChangeImageIndex = (imageIndex: number) => {
+    setCurrentImageIndex(imageIndex);
   };
 
+  const controlWidthPixels = GALLERY_WIDTH / images.length;
+  const activeImagePosition = currentImageIndex * controlWidthPixels;
+
   return (
-    <>
+    <div className={cn(styles.gallery, className)} {...props}>
       <div className={styles.wrapper}>
-        {images.map((imageUrl, imageIndex) => (
+        <div className={styles.pictures}>
+          {images.map((imageUrl, imageIndex) => (
+            <Image
+              onClick={() => handleChangeImageIndex(imageIndex)}
+              key={imageUrl}
+              className={cn(styles.picture, {
+                [styles['picture--active']]: currentImageIndex === imageIndex,
+              })}
+              width={120}
+              height={120}
+              src={imageUrl}
+              alt='product'
+            />
+          ))}
+        </div>
+        <div className={styles.generalPicture}>
           <Image
-            onClick={() => handleChangePhoto(imageIndex)}
-            key={imageUrl}
-            className={cn(styles.picture, {
-              [styles['picture--active']]: currentImageIndex === imageIndex,
-            })}
-            width={120}
-            height={120}
-            priority
+            src={images[currentImageIndex]}
+            width={GALLERY_WIDTH}
+            height={600}
             quality={100}
-            src={imageUrl}
             alt='product'
           />
-        ))}
+
+          <div className={styles.controls}>
+            <span
+              className={cn(styles.control, styles['control--active'])}
+              style={{
+                left: `${activeImagePosition}px`,
+                width: `${controlWidthPixels}px`,
+              }}></span>
+            <span
+              className={styles.control}
+              style={{ width: `${GALLERY_WIDTH}px` }}></span>
+          </div>
+        </div>
       </div>
-      <div className={styles.generalPicture}>
-        <Image
-          src={images[currentImageIndex]}
-          width={540}
-          height={600}
-          quality={100}
-          alt='product'
-        />
-      </div>
-    </>
+    </div>
   );
 };
