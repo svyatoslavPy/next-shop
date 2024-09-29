@@ -41,7 +41,7 @@ export const ProductDetails = ({
       <p className={styles.price}>$ {price}</p>
 
       <div className={styles.ratingWrapper}>
-        <Rating initialRating={rating} />
+        <Rating rating={rating} />
         <p className={styles.statistics}>{countReviews} отзыва</p>
       </div>
 

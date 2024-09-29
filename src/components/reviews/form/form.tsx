@@ -1,28 +1,53 @@
 'use client';
 
+import { client } from '@/api';
+import { Notification } from '@/components/notification';
 import { Rating } from '@/components/rating';
 import { IReviewForm } from '@/shared/interfaces/review-form.interface';
 import { Button } from '@/shared/ui/button';
 import { Input } from '@/shared/ui/input';
 import { TextArea } from '@/shared/ui/text-area';
-import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Controller, useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import * as yup from 'yup';
 
 import styles from './form.module.scss';
 
+const ReviewSchema = yup
+  .object({
+    review: yup.string().required('Заполните отзыв'),
+    name: yup.string().required('Заполните имя'),
+    email: yup.string().email(' ').required('Заполните почту'),
+    rating: yup.number().positive('Укажите рейтинг').integer().required(),
+  })
+  .required();
+
 export const ReviewForm = ({ productId }: { productId: number }) => {
-  const { register, handleSubmit } = useForm<IReviewForm>({
+  const {
+    register,
+    handleSubmit,
+    reset,
+    control,
+    formState: { errors },
+  } = useForm<IReviewForm>({
     defaultValues: {
       name: '',
-      email: '',
       review: '',
+      email: '',
+      rating: 0,
     },
+    resolver: yupResolver(ReviewSchema),
   });
 
   const onSubmit = async (reviewData: IReviewForm) => {
-    console.log(reviewData);
+    const data = await client.createReview(productId, reviewData);
 
-    // const testData = { ...reviewData, rating: 5 };
-    // await client.createReview(productId, testData);
+    toast.custom(<Notification icon='success' message={data.message} />, {
+      position: 'bottom-center',
+    });
+
+    reset();
   };
 
   return (
@@ -32,22 +57,29 @@ export const ReviewForm = ({ productId }: { productId: number }) => {
         Ваш email не будет опубликован. Обязательные поля помечены *
       </p>
 
+      <label htmlFor='review' className={styles.label}>
+        Отзыв*
+      </label>
+
       <TextArea
-        {...register('review', { required: true })}
+        {...register('review')}
+        id='review'
+        error={errors.review}
         className={styles.textArea}
-        placeholder='Отзыв*'
       />
 
       <Input
-        {...register('name', { required: true })}
+        {...register('name')}
+        error={errors.name}
         className={styles.input}
         appearance='white'
         placeholder='Ваше имя*'
       />
 
       <Input
-        {...register('email', { required: true })}
+        {...register('email')}
         className={styles.input}
+        error={errors.email}
         appearance='white'
         placeholder='Ваш email*'
       />
@@ -61,7 +93,20 @@ export const ReviewForm = ({ productId }: { productId: number }) => {
 
       <p className={styles.rateHeading}>Рейтинг*</p>
 
-      <Rating className={styles.rating} initialRating={0} isEditable />
+      <Controller
+        control={control}
+        name='rating'
+        render={({ field }) => (
+          <Rating
+            className={styles.rating}
+            isEditable
+            rating={field.value}
+            ref={field.ref}
+            setRating={field.onChange}
+            error={errors.rating}
+          />
+        )}
+      />
 
       <Button type='submit' appearance='black' className={styles.button}>
         Отправить

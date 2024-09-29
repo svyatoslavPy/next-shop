@@ -1,4 +1,5 @@
 import { DetailedHTMLProps, InputHTMLAttributes } from 'react';
+import { FieldError } from 'react-hook-form';
 
 export type Appearance = 'gray' | 'white';
 
@@ -8,4 +9,5 @@ export interface InputProps
     HTMLInputElement
   > {
   appearance?: Appearance;
+  error?: FieldError;
 }

@@ -15,7 +15,7 @@ export const Review = ({ name, rating, date, description }: IReview) => {
         <p className={styles.date}>{formattedDate}</p>
       </div>
 
-      <Rating className={styles.rating} initialRating={rating} />
+      <Rating className={styles.rating} rating={rating} />
 
       <p className={styles.description}>{description}</p>
     </article>

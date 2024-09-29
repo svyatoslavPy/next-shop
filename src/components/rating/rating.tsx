@@ -1,81 +1,92 @@
 'use client';
 
-import { useCreateQueryString } from '@/hooks/useCreateQueryString';
 import { LENGTH_RATING } from '@/shared/constants';
 import { StarIcon } from '@/shared/icons';
 import cn from 'classnames';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { KeyboardEvent, useEffect, useState } from 'react';
+import {
+  ForwardedRef,
+  KeyboardEvent,
+  forwardRef,
+  useEffect,
+  useState,
+} from 'react';
 
 import styles from './rating.module.scss';
 import { RatingProps } from './rating.props';
 
-export const Rating = ({
-  initialRating,
-  isEditable = false,
-  className,
-  ...props
-}: RatingProps) => {
-  const searchParams = useSearchParams();
-  const rating = Number(searchParams.get('rating')) || initialRating;
+export const Rating = forwardRef(
+  (
+    {
+      rating,
+      isEditable = false,
+      className,
+      setRating,
+      error,
+      ...props
+    }: RatingProps,
+    ref: ForwardedRef<HTMLDivElement>,
+  ) => {
+    const [ratingArray, setRatingArray] = useState<JSX.Element[]>(
+      new Array(LENGTH_RATING).fill(<StarIcon />),
+    );
 
-  const [ratingArray, setRatingArray] = useState<JSX.Element[]>(
-    new Array(LENGTH_RATING).fill(<StarIcon />),
-  );
+    useEffect(() => {
+      constructRating(rating);
+    }, [rating]);
 
-  const pathname = usePathname();
-  const router = useRouter();
-  const { createQueryString } = useCreateQueryString();
+    const constructRating = (currentRate: number) => {
+      const updatedArray = ratingArray.map((r: JSX.Element, index: number) => {
+        return (
+          <span
+            className={cn(styles.star, {
+              [styles.filled]: index < currentRate,
+              [styles.editable]: isEditable,
+            })}
+            onMouseLeave={() => handleChangeRating(rating)}
+            onClick={() => handleClickRating(index + 1)}
+            onMouseEnter={() => handleChangeRating(index + 1)}
+            onKeyDown={(e: KeyboardEvent) => handleSpace(index + 1, e)}>
+            <StarIcon tabIndex={isEditable ? 0 : -1} />
+          </span>
+        );
+      });
 
-  useEffect(() => {
-    constructRating(rating);
-  }, [rating]);
+      setRatingArray(updatedArray);
+    };
 
-  const constructRating = (currentRate: number) => {
-    const updatedArray = ratingArray.map((r: JSX.Element, index: number) => {
-      return (
-        <span
-          className={cn(styles.star, {
-            [styles.filled]: index < currentRate,
-            [styles.editable]: isEditable,
-          })}
-          onMouseLeave={() => handleChangeRating(rating)}
-          onClick={() => handleClickRating(index + 1)}
-          onMouseEnter={() => handleChangeRating(index + 1)}
-          onKeyDown={(e: KeyboardEvent) => handleSpace(index + 1, e)}>
-          <StarIcon tabIndex={isEditable ? 0 : -1} />
-        </span>
-      );
-    });
+    const handleSpace = (i: number, e: KeyboardEvent) => {
+      if (e.code !== 'Enter' || !isEditable || !setRating) {
+        return;
+      }
 
-    setRatingArray(updatedArray);
-  };
+      setRating(i);
+    };
 
-  const handleSpace = (i: number, e: KeyboardEvent) => {
-    if (e.code !== 'Enter' || !isEditable) {
-      return;
-    }
+    const handleChangeRating = (i: number) => {
+      if (!isEditable) return;
 
-    router.push(`${pathname}?${createQueryString('rating', i.toString())}`);
-  };
+      constructRating(i);
+    };
 
-  const handleChangeRating = (i: number) => {
-    if (!isEditable) return;
+    const handleClickRating = (i: number) => {
+      if (!isEditable || !setRating) return;
 
-    constructRating(i);
-  };
+      setRating(i);
+    };
 
-  const handleClickRating = (i: number) => {
-    if (!isEditable) return;
+    return (
+      <div
+        {...props}
+        ref={ref}
+        className={cn(styles.ratingWrapper, className, {
+          [styles.error]: error,
+        })}>
+        {ratingArray.map((r, i) => (
+          <span key={i}>{r}</span>
+        ))}
 
-    router.push(`${pathname}?${createQueryString('rating', i.toString())}`);
-  };
-
-  return (
-    <div className={cn(styles.rating, className)} {...props}>
-      {ratingArray.map((r, i) => (
-        <span key={i}>{r}</span>
-      ))}
-    </div>
-  );
-};
+        {error && <span className={styles.errorMessage}>{error.message}</span>}
+      </div>
+    );
+  },
+);

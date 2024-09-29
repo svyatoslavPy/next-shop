@@ -1,5 +1,9 @@
 @import '../../../styles/variables';
 
+.inputWrapper {
+  position: relative;
+}
+
 .input {
   width: 100% ;
   border: none;
@@ -18,3 +22,12 @@
 .white {
   background: $white;
 }
+
+.errorMessage {
+  position: absolute;
+  bottom: -25px;
+  left: 0;
+  color: $red;
+  font-size: 14px;
+}
+

@@ -2,5 +2,10 @@ export interface IReviewForm {
   name: string;
   email: string;
   review: string;
-  // rating: number;
+  rating: number;
+}
+
+export interface IReviewSentResponce {
+  success: boolean;
+  message: string;
 }

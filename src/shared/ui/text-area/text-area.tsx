@@ -9,14 +9,18 @@ const font = DM_Sans({ subsets: ['latin'] });
 
 export const TextArea = forwardRef(
   (
-    { className, ...props }: TextAreaProps,
+    { className, error, ...props }: TextAreaProps,
     ref: ForwardedRef<HTMLTextAreaElement>,
   ) => {
     return (
-      <textarea
-        ref={ref}
-        className={cn(styles.textarea, font.className, className)}
-        {...props}></textarea>
+      <div className={styles.textareaWrapper}>
+        <textarea
+          ref={ref}
+          className={cn(styles.textarea, font.className, className)}
+          {...props}></textarea>
+
+        {error && <span className={styles.errorMessage}>{error.message}</span>}
+      </div>
     );
   },
 );
