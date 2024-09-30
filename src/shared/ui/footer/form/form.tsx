@@ -59,6 +59,7 @@ export const Form = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     if (!isSumbit) return;
 
     reset();

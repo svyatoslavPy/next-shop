@@ -19,7 +19,7 @@ const ReviewSchema = yup
     review: yup.string().required('Заполните отзыв'),
     name: yup.string().required('Заполните имя'),
     email: yup.string().email(' ').required('Заполните почту'),
-    rating: yup.number().positive('Укажите рейтинг').integer().required(),
+    rating: yup.number().positive('').integer().required('Укажите рейтинг'),
   })
   .required();
 
@@ -28,15 +28,11 @@ export const ReviewForm = ({ productId }: { productId: number }) => {
     register,
     handleSubmit,
     reset,
+    watch,
+    setValue,
     control,
     formState: { errors },
   } = useForm<IReviewForm>({
-    defaultValues: {
-      name: '',
-      review: '',
-      email: '',
-      rating: 0,
-    },
     resolver: yupResolver(ReviewSchema),
   });
 

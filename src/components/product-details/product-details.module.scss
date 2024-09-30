@@ -45,9 +45,8 @@
 
 .quantity {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  column-gap: 24px;
   width: 102px;
   padding: 14px 14px;
   border-radius: 4px;
@@ -83,6 +82,10 @@
 
 .icon {
   cursor: pointer;
+}
+
+.active svg {
+  fill: $black;
 }
 
 .line {
@@ -123,3 +126,4 @@
     color: $gray-dark;
   }
 }
+

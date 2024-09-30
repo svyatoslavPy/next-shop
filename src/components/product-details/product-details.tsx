@@ -5,6 +5,7 @@ import { productSocialNetworksRoutes } from '@/shared/constants/navigation';
 import { FavoriteIcon } from '@/shared/icons';
 import { EmailIcon } from '@/shared/icons/email';
 import { Button } from '@/shared/ui/button';
+import cn from 'classnames';
 import Link from 'next/link';
 import { useState } from 'react';
 
@@ -74,7 +75,10 @@ export const ProductDetails = ({
 
       <div className={styles.wrapperIcons}>
         <div className={styles.favoriteInner}>
-          <span className={styles.icon}>
+          <span
+            className={cn(styles.icon, {
+              [styles.active]: false,
+            })}>
             <FavoriteIcon />
           </span>
 

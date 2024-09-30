@@ -15,6 +15,7 @@ export const Tabs = ({ tabs, tabName }: TabsProps) => {
   const { createQueryString } = useCreateQueryString();
 
   const defaultTab = tabs.find((item) => getOnlyWord(item.name) === tabName);
+
   const currentTabId = Number(searchParams.get('tabId')) || defaultTab?.id;
 
   const handleChangeTab = (tabId: number) => {
