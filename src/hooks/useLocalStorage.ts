@@ -1,6 +1,5 @@
 'use client';
 
-// FIX LOCALSTORAGE ....
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 export const getStorageValue = <T>(key: string, defaultValue: T): T => {
