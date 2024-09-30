@@ -27,7 +27,7 @@ export default function ShoppingCart() {
   const handleDecreaseQuantity = (id: number) => {
     const result = products.map((product) => {
       if (product.sku === id) {
-        return { ...product, quantity: product.sku-- };
+        return { ...product, quantity: product.quantity-- };
       }
 
       return product;
