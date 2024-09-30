@@ -1,0 +1,16 @@
+@import '../../styles/variables';
+
+.quantity {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 102px;
+  padding: 14px 14px;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: $gray-primary;
+}
+
+.quantity, .quantityButton {
+  color: $gray-dark;
+}

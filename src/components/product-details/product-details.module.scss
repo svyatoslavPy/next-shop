@@ -43,21 +43,6 @@
   margin-top: 75px;
 }
 
-.quantity {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 102px;
-  padding: 14px 14px;
-  border-radius: 4px;
-  font-size: 16px;
-  background-color: $gray-primary;
-}
-
-.quantity, .quantityButton {
-  color: $gray-dark;
-}
-
 .addToCartButton {
   font-size: 16px;
   font-weight: 700;
@@ -82,6 +67,10 @@
 
 .icon {
   cursor: pointer;
+
+  svg {
+    fill: gray;
+  }
 }
 
 .active svg {

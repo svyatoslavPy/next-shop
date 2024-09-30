@@ -1,14 +1,20 @@
 'use client';
 
-import { DEFAULT_PRODUCT_QUANTITY } from '@/shared/constants';
+import { useLocalStorage } from '@/hooks/useLocalStorage';
+import {
+  DEFAULT_PRODUCT_QUANTITY,
+  LOCAL_STORAGE_CART_KEY,
+} from '@/shared/constants';
 import { productSocialNetworksRoutes } from '@/shared/constants/navigation';
 import { FavoriteIcon } from '@/shared/icons';
 import { EmailIcon } from '@/shared/icons/email';
+import { IProduct } from '@/shared/interfaces/product.interface';
 import { Button } from '@/shared/ui/button';
 import cn from 'classnames';
 import Link from 'next/link';
 import { useState } from 'react';
 
+import { Quantity } from '../quantity';
 import { Rating } from '../rating';
 import styles from './product-details.module.scss';
 import { ProductDetailsProps } from './product-details.props';
@@ -26,6 +32,12 @@ export const ProductDetails = ({
     DEFAULT_PRODUCT_QUANTITY,
   );
 
+  const [products, setProducts] = useLocalStorage<
+    Pick<IProduct, 'sku' | 'quantity'>[]
+  >(LOCAL_STORAGE_CART_KEY, []);
+
+  const isHaveProduct = products.some((product) => product.sku === id);
+
   const handleIncrease = () => {
     setProductQuantity((currentQuantity) => currentQuantity + 1);
   };
@@ -34,6 +46,23 @@ export const ProductDetails = ({
     if (productQuantity === DEFAULT_PRODUCT_QUANTITY) return;
 
     setProductQuantity((currentQuantity) => currentQuantity - 1);
+  };
+
+  const handleAddProduct = () => {
+    const newProduct = { sku: id, quantity: productQuantity };
+
+    if (isHaveProduct) {
+      handleDeleteProduct();
+
+      return;
+    }
+
+    setProducts([...products, newProduct]);
+  };
+
+  const handleDeleteProduct = () => {
+    const updatedProducts = products.filter((product) => product.sku !== id);
+    setProducts(updatedProducts);
   };
 
   return (
@@ -49,27 +78,18 @@ export const ProductDetails = ({
       <p className={styles.description}>{description}</p>
 
       <div className={styles.actionsWrapper}>
-        <div className={styles.quantity}>
-          <Button
-            onClick={handleDecrease}
-            className={styles.quantityButton}
-            appearance='none'>
-            -
-          </Button>
-          <p>{productQuantity}</p>
-          <Button
-            onClick={handleIncrease}
-            className={styles.quantityButton}
-            appearance='none'>
-            +
-          </Button>
-        </div>
+        <Quantity
+          quantity={productQuantity}
+          onIncrease={handleIncrease}
+          onDecrease={handleDecrease}
+        />
 
         <Button
+          onClick={handleAddProduct}
           className={styles.addToCartButton}
           appearance='ghost'
           isFullWidth>
-          Добавить в корзину
+          {isHaveProduct ? 'Товар добавлен' : 'Добавить в корзину'}
         </Button>
       </div>
 

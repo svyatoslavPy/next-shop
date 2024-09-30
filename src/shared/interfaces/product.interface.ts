@@ -9,4 +9,5 @@ export interface IProduct {
   sku: number;
   reviews: IReview[];
   images: string[];
+  quantity: number;
 }
