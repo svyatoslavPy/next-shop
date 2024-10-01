@@ -1,0 +1,40 @@
+@import '../../../styles/variables';
+
+.cartItem {
+  display: grid;
+  grid-template-columns: [start] 136px 39px [info] 113px 124px [quantity] 102px 52px 12px [end];
+  padding-bottom: 39px;
+  border-bottom: 1px solid $gray-light;
+  
+  // &:not(&:last-child) {
+  // }
+}
+
+.image {
+  grid-column: start / info;
+}
+
+.info {
+  grid-column: info / quantity;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: 400;
+  color: $black;
+}
+
+.price {
+  font-size: 16px;
+  color: $brown;
+  margin-top: 4px;
+}
+
+.quantity {
+  height: 53px;
+}
+
+.icon {
+  cursor: pointer;
+  grid-column: end;
+}

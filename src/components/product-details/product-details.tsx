@@ -1,19 +1,17 @@
 'use client';
 
-import { useLocalStorage } from '@/hooks/useLocalStorage';
-import {
-  DEFAULT_PRODUCT_QUANTITY,
-  LOCAL_STORAGE_CART_KEY,
-} from '@/shared/constants';
+import { DEFAULT_PRODUCT_QUANTITY } from '@/shared/constants';
 import { productSocialNetworksRoutes } from '@/shared/constants/navigation';
 import { FavoriteIcon } from '@/shared/icons';
 import { EmailIcon } from '@/shared/icons/email';
-import { IProduct } from '@/shared/interfaces/product.interface';
 import { Button } from '@/shared/ui/button';
+import { useCartStore } from '@/store/cart-store';
 import cn from 'classnames';
 import Link from 'next/link';
 import { useState } from 'react';
+import toast from 'react-hot-toast';
 
+import { Notification } from '../notification';
 import { Quantity } from '../quantity';
 import { Rating } from '../rating';
 import styles from './product-details.module.scss';
@@ -28,15 +26,12 @@ export const ProductDetails = ({
   id,
   rating,
 }: ProductDetailsProps) => {
+  const { addProduct, productsCart } = useCartStore((state) => state);
+  const isHaveProduct = productsCart.some((product) => product.sku === id);
+
   const [productQuantity, setProductQuantity] = useState(
     DEFAULT_PRODUCT_QUANTITY,
   );
-
-  const [products, setProducts] = useLocalStorage<
-    Pick<IProduct, 'sku' | 'quantity'>[]
-  >(LOCAL_STORAGE_CART_KEY, []);
-
-  const isHaveProduct = products.some((product) => product.sku === id);
 
   const handleIncrease = () => {
     setProductQuantity((currentQuantity) => currentQuantity + 1);
@@ -51,18 +46,19 @@ export const ProductDetails = ({
   const handleAddProduct = () => {
     const newProduct = { sku: id, quantity: productQuantity };
 
-    if (isHaveProduct) {
-      handleDeleteProduct();
+    toast.custom(
+      <Notification
+        icon='success'
+        message={
+          !isHaveProduct ? 'Товар добавлен' : 'Количество товара увеличено'
+        }
+      />,
+      {
+        position: 'bottom-center',
+      },
+    );
 
-      return;
-    }
-
-    setProducts([...products, newProduct]);
-  };
-
-  const handleDeleteProduct = () => {
-    const updatedProducts = products.filter((product) => product.sku !== id);
-    setProducts(updatedProducts);
+    addProduct(newProduct);
   };
 
   return (
@@ -89,7 +85,7 @@ export const ProductDetails = ({
           className={styles.addToCartButton}
           appearance='ghost'
           isFullWidth>
-          {isHaveProduct ? 'Товар добавлен' : 'Добавить в корзину'}
+          Добавить в корзину
         </Button>
       </div>
 

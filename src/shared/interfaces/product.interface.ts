@@ -11,3 +11,5 @@ export interface IProduct {
   images: string[];
   quantity: number;
 }
+
+export type TCartProduct = Pick<IProduct, 'sku' | 'quantity'>;
