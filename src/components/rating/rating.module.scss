@@ -1,0 +1,29 @@
+@import '../../styles/variables';
+
+.ratingWrapper {
+  display: flex;
+  column-gap: 10px;
+  position: relative;
+}
+
+.editable svg {
+  cursor: pointer;
+}
+
+.error svg {
+  stroke: red;
+}
+
+.filled svg {
+  fill: $black;
+  stroke: none;
+}
+
+.errorMessage {
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+  font-size: 14px;
+  color: $red;
+}
+

@@ -1,0 +1,50 @@
+@import '../../../styles/variables';
+
+$banner-height: 646px;
+
+.banners {
+  margin-top: 15px;
+}
+
+.banner {
+  width: 100%;
+  padding-left: 39px;
+  padding-top: 226px;
+  height: $banner-height;
+  background-image: url('../../../shared/images/main-banner.png');
+
+  &--primary {
+    background-image: url('../../../shared/images/additional-banner.png');
+  }
+}
+
+.title {
+  color: $white;
+  font-weight: 500;
+  font-size: 33px;
+  line-height: 44px;
+}
+
+.price {
+  font-weight: 400;
+  color: $white;
+  margin-top: 16px;
+  font-size: 26px;
+  line-height: 35px;
+}
+
+.link {
+  position: absolute;
+  text-align: center;
+  text-decoration: none;
+  width: 190px;
+  border: 2px solid $white;
+  padding: 14px 22px;
+  color: $white;
+  font-weight: 700;
+  font-size: 20px;
+  border-radius: 6px;
+  margin-top: 48px;
+}
+
+

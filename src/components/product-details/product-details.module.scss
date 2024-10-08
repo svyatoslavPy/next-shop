@@ -1,0 +1,129 @@
+@import '../../styles/variables';
+
+
+.title {
+  color: $black;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 35px;
+}
+
+.price {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+  margin-top: 23px;
+  color: $brown;
+}
+
+.statistics {
+  font-size: 16px;
+  color: $gray-dark;
+}
+
+.description {
+  color: $gray-dark;
+  line-height: 27px;
+  font-weight: 400;
+  font-size: 16px;
+  margin-top: 19px;
+}
+
+.ratingWrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 24px;
+  margin-top: 61px;
+}
+
+.actionsWrapper {
+  display: flex;
+  column-gap: 23px;
+  align-items: center;
+  margin-top: 75px;
+}
+
+.quantity {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 102px;
+  padding: 14px 14px;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: $gray-primary;
+}
+
+.quantity, .quantityButton {
+  color: $gray-dark;
+}
+
+.addToCartButton {
+  font-size: 16px;
+  font-weight: 700;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.wrapperIcons {
+  display: flex;
+  column-gap: 39px;
+  margin-top: 80px;
+}
+
+.favoriteInner {
+  display: flex;
+  align-items: center;
+
+  svg {
+    fill: $gray-dark;
+  }
+}
+
+.icon {
+  cursor: pointer;
+}
+
+.active svg {
+  fill: $black;
+}
+
+.line {
+  width: 1px;
+  height: 20px;
+  background-color: $gray-light;
+  margin-left: 39px;
+}
+
+.socialNetworks {
+  display: flex;
+  align-items: center;
+  column-gap: 25px;
+}
+
+.item {
+  cursor: pointer;
+  transition: all 0.1s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.infoWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 37px;
+}
+
+.info {
+  color: $black;
+  font-size: 16px;
+
+  span {
+    margin-left: 16px;
+    color: $gray-dark;
+  }
+}
+

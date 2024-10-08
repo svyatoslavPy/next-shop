@@ -1,0 +1,29 @@
+@import '../styles/variables';
+
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 64px;
+  font-weight: 500;
+}
+
+.products {
+  margin-top: 39px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 86px 57px;
+}
+
+.title {
+  color: $black;
+  font-size: 33px;
+  line-height: 44px;
+}
+
+.link {
+  font-size: 20px;
+  line-height: 26px;
+  text-decoration: none;
+  color: $brown;
+}

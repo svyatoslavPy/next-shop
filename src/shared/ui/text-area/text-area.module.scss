@@ -1,0 +1,27 @@
+@import '../../../styles/variables';
+
+.textareaWrapper {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.textarea {
+  border: none;
+  border-bottom: 1px solid $gray-light;
+  outline: none;
+  resize: none;
+
+  &::placeholder {
+    font-size: 14px;
+    color: $gray-dark;
+  }
+}
+
+.errorMessage {
+  position: absolute;
+  bottom: -25px;
+  left: 0;
+  color: $red;
+  font-size: 14px;
+}

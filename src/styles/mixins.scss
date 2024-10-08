@@ -1,49 +1,26 @@
-$tablet-xl: 1200px;
-$tablet-lg: 992px;
-$tablet-md: 768px;
-$tablet-sm: 640px;
-$phone-md: 450px;
-$phone-sm: 320px;
+@import './adaptive';
 
-@mixin tablet-xl {
-  @media (max-width: #{$tablet-xl}) {
-    @content;
-  }
+$thumb-size: 16px;
+$control-size: 3px;
+$control-height: 10px;
+
+@mixin track-styles {
+  appearance: none;
+  background: transparent;
+  border: transparent;
 }
 
-@mixin tablet-lg {
-  @media (max-width: #{$tablet-lg}) {
-    @content;
-  }
-}
+@mixin thumb-styles {
+  appearance: none;
+  pointer-events: all;
+  width: $thumb-size;
+  height: $thumb-size;
+  border-radius: 0px;
+  border: 0 none;
+  cursor: grab;
+  background-color: red;
 
-@mixin tablet-md {
-  @media (max-width: #{$tablet-md}) {
-    @content;
-  }
-}
-
-@mixin tablet-sm {
-  @media (max-width: #{$tablet-sm}) {
-    @content;
-  }
-}
-
-@mixin phone-md {
-  @media (max-width: #{$phone-md}) {
-    @content;
-  }
-}
-
-
-@mixin phone-sm {
-  @media (max-width: #{$phone-sm}) {
-    @content;
-  }
-}
-
-@mixin device-custom($screen) {
-  @media (max-width: #{$screen + 'px'}) {
-    @content;
+  &:active {
+    cursor: grabbing;
   }
 }

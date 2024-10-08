@@ -8,7 +8,6 @@
   ],
 
   "plugins": ["react", "prettier"],
-
   "rules": {
     "no-unused-vars": "off",
     "prettier/prettier": "error",

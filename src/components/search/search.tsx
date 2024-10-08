@@ -1,11 +1,13 @@
 'use client';
 
+import { useCreateQueryString } from '@/hooks/useCreateQueryString';
+import { useKeyDown } from '@/hooks/useKeyDown';
 import { GlassIcon } from '@/shared/icons/glass';
 import { Input } from '@/shared/ui/input';
 import cn from 'classnames';
 import { motion } from 'framer-motion';
 import { usePathname, useRouter } from 'next/navigation';
-import React, { ChangeEvent, ForwardedRef, forwardRef, useState } from 'react';
+import { ChangeEvent, ForwardedRef, forwardRef, useState } from 'react';
 
 import styles from './search.module.scss';
 import { SearchProps } from './search.props';
@@ -14,20 +16,27 @@ export const Search = motion(
   // eslint-disable-next-line react/display-name
   forwardRef(
     (
-      { className, ...props }: SearchProps,
+      {
+        className,
+        appearance = 'gray',
+        directionIcon = 'left',
+        placeholder = 'Поиск',
+        ...props
+      }: SearchProps,
       ref: ForwardedRef<HTMLDivElement>,
     ) => {
       const router = useRouter();
       const pathname = usePathname();
+      const { createQueryString } = useCreateQueryString();
       const [searchQuery, setSearchQuery] = useState('');
 
       const handleSearch = () => {
-        router.push(`${pathname}?search=${searchQuery}`);
-      };
+        const params = createQueryString('search', searchQuery);
 
-      const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') {
-          handleSearch();
+        if (searchQuery) {
+          router.push(`${pathname}?${params.toString()}`);
+        } else {
+          router.push(`${pathname}`);
         }
       };
 
@@ -35,16 +44,33 @@ export const Search = motion(
         setSearchQuery(e.target.value);
       };
 
+      useKeyDown('Enter', () => {
+        handleSearch();
+      });
+
       return (
-        <div className={cn(styles.search, className)} {...props} ref={ref}>
+        <div
+          className={cn(styles.searchWrapper, className, {
+            [styles['searchWrapper--white']]: appearance === 'white',
+          })}
+          {...props}
+          ref={ref}>
           <Input
-            onKeyDown={handleKeyDown}
             onChange={handleChangeQuery}
-            className={styles.searchInput}
-            placeholder='Поиск'
+            placeholder={placeholder}
+            value={searchQuery}
+            className={styles[appearance]}
+            appearance={appearance}
           />
 
-          <span onClick={handleSearch} className={styles.searchIcon}>
+          <span
+            onClick={handleSearch}
+            className={cn(styles.searchIcon, {
+              [styles['searchIcon--left']]: directionIcon === 'left',
+              [styles['searchIcon--right']]: directionIcon === 'right',
+              [styles['searchIcon--gray']]: appearance === 'gray',
+              [styles['searchIcon--black']]: appearance === 'white',
+            })}>
             <GlassIcon />
           </span>
         </div>

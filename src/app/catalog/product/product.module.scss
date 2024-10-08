@@ -1,0 +1,27 @@
+@import '../../../styles/variables';
+
+.product {
+  display: grid;
+  grid-template-columns: [start] 120px 39px 540px 62px [before-end] 1fr;
+  margin-top: 128px;
+  margin-bottom: 100px;
+}
+
+.gallery {
+  grid-column: start / before-end;
+  gap: 40px;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 27px;
+  color: $gray-dark;
+  margin-top: 24px;
+}
+
+.reviews {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 87px;
+  margin-top: 42px;
+}

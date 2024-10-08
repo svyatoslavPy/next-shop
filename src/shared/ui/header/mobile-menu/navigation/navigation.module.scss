@@ -1,0 +1,31 @@
+@import '../../../../../styles/variables';
+
+.navigation, .links {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.navigation {
+  margin-top: 39px;
+}
+
+.links {
+  &:not(&:last-child) {
+    padding-bottom: 31px;
+    border-bottom: 1px solid $gray-light;
+  }
+}
+
+.item, .link {
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+  color: $black;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.link {
+  text-decoration: none;
+}

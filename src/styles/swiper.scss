@@ -1,0 +1,20 @@
+@import './variables';
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  opacity: 1;
+  color: $white;
+  background: $white;
+}
+
+.swiper-pagination-bullet-active {
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  line-height: 16px;
+  font-size: 12px;
+  opacity: 1;
+  background: transparent;
+  border: 1px solid $white;
+}

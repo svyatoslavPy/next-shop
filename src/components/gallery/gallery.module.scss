@@ -1,0 +1,54 @@
+@import '../../styles/variables';
+
+.wrapper {
+  display: flex;
+  gap: 40px;
+}
+
+.gallery {
+  display: grid;
+}
+
+.pictures {
+  display: grid;
+  gap: 40px;
+}
+
+.picture {
+  border-radius: 8px;
+  transition: all 0.1s;
+  cursor: pointer;
+  
+  &--active {
+    border: 1px solid $gray-dark;
+  }
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+
+.generalPicture {
+  // grid-column: middle / before-end;
+  position: relative;
+}
+
+.control {
+  height: 2px;
+  position: absolute;
+  transition: all 0.2s;
+  bottom: -24px;
+  background-color: $gray-light;
+
+  &--active {
+    height: 2px;
+    position: absolute;
+    background-color: $gray-dark;
+    left: 0px;
+    z-index: 2;
+  }
+}
+
+
+

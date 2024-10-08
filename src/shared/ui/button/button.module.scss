@@ -1,0 +1,57 @@
+@import '../../../styles/variables';
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.none {
+  border: none;
+  outline: none;
+}
+
+.black {
+  background-color: $black;
+  color: $white; 
+}
+
+.white {
+  border: 1px solid $gray-light;
+  color: $black;
+
+  &:not(&:has(.icon)):hover {
+    background-color: $black;
+    color: $white;
+  }
+}
+
+.ghost {
+  color: $black;
+  border: none;
+  outline: 1px solid $black;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.icon {
+  svg {
+    max-width: 6px;
+    height: 10px;
+  }
+
+  &--left {
+    transform: rotate(180deg);
+  }
+
+  &--right {
+    transform: rotate(360deg);
+  }
+}
+
+
